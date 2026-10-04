@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F6F2EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Como excluir a sua conta do app Ribeirão Preto, da JMK Soluções, pelo app ou por e-mail, e o que é apagado e o que fica.">
+<title>Excluir sua conta – App Ribeirão Preto (JMK Soluções)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23B8472A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-style='italic' font-size='38' text-anchor='middle' fill='%23ffffff'%3ER%3C/text%3E%3C/svg%3E">
+<style>
+  /* Mesma paleta da política (lib/theme.dart). O número dos passos e o
+     botão usam texto escuro no tema escuro: branco sobre o laranja claro
+     não passa de 4,5:1. */
+  :root {
+    color-scheme: light dark;
+    --fundo: #F6F2EC;
+    --superficie: #FFFFFF;
+    --superficie-alt: #EDE6DC;
+    --tinta: #1C1917;
+    --tinta-suave: #66605A;
+    --linha: #E4DCD1;
+    --acento: #B8472A;
+    --acento-texto: #A33F25;
+    --acento-suave: #F4E1D7;
+    --sobre-acento: #FFFFFF;
+    --folha: #3F5A45;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #0F0E0D;
+      --superficie: #1A1816;
+      --superficie-alt: #252220;
+      --tinta: #F5F1EA;
+      --tinta-suave: #A8A29E;
+      --linha: #2E2A26;
+      --acento: #E0784F;
+      --acento-texto: #E0784F;
+      --acento-suave: #3A2219;
+      --sobre-acento: #0F0E0D;
+      --folha: #8DB596;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font: 400 1.0625rem/1.65 var(--sans);
+    overflow-wrap: break-word;
+  }
+  .pular {
+    position: absolute; left: -999px; top: 0;
+    background: var(--superficie); color: var(--tinta);
+    padding: .6rem .9rem; border-radius: 10px; z-index: 1;
+  }
+  .pular:focus { left: 1rem; top: 1rem; }
+  .pagina { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  @media (min-width: 40rem) { .pagina { padding: 3.5rem 1.5rem 5rem; } }
+  .marca {
+    margin: 0;
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.375rem; line-height: 1.2; color: var(--acento-texto);
+  }
+  .sobrelinha {
+    margin: .35rem 0 0;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--tinta-suave);
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.25rem, 9vw, 3.25rem); line-height: 1.05;
+    letter-spacing: -.01em; margin: 1.25rem 0 .6rem;
+  }
+  .data { margin: 0 0 2rem; color: var(--tinta-suave); font-size: .9375rem; }
+  .lead { font-size: 1.125rem; }
+  h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.15;
+    margin: 3rem 0 1rem; padding-top: 1.75rem;
+    border-top: 1px solid var(--linha);
+    scroll-margin-top: 1rem;
+  }
+  .cartao h2 { border-top: 0; padding-top: 0; margin: 0 0 .75rem; }
+  h3 { font-size: 1.0625rem; font-weight: 650; line-height: 1.35; margin: 0 0 .35rem; }
+  p, ul, ol { margin: 0 0 1rem; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .35rem 0; }
+  a { color: var(--acento-texto); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 2px; }
+  strong { font-weight: 650; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .875em; background: var(--superficie-alt);
+    padding: .08em .35em; border-radius: 6px; overflow-wrap: anywhere;
+  }
+  /* Ponto que o advogado precisa ver antes de publicar (docs/lojas.md). */
+  .revisar {
+    background: var(--acento-suave); color: var(--acento-texto);
+    font-size: .8125em; font-weight: 650; letter-spacing: .02em;
+    padding: .05em .35em; border-radius: 6px; white-space: nowrap;
+  }
+  .cartao {
+    background: var(--superficie); border: 1px solid var(--linha);
+    border-radius: 20px; padding: 1.25rem 1.2rem; margin: 0 0 1rem;
+  }
+  .cartao > :last-child { margin-bottom: 0; }
+  .atalhos { display: grid; gap: .75rem; margin: 0 0 1rem; }
+  @media (min-width: 36rem) { .atalhos { grid-template-columns: 1fr 1fr; } }
+  .atalho {
+    display: block; text-decoration: none; color: var(--tinta);
+    background: var(--acento-suave); border-radius: 18px; padding: .9rem 1rem;
+  }
+  .atalho strong { display: block; color: var(--acento-texto); }
+  .atalho span { font-size: .9375rem; color: var(--tinta-suave); }
+  .atalho:hover strong { text-decoration: underline; }
+  .passos { list-style: none; counter-reset: passo; padding: 0; margin: 0 0 1rem; }
+  .passos li {
+    counter-increment: passo; position: relative;
+    padding-left: 2.75rem; margin: .85rem 0; min-height: 2rem;
+  }
+  .passos li::before {
+    content: counter(passo);
+    position: absolute; left: 0; top: -.05rem;
+    width: 2rem; height: 2rem; border-radius: 50%;
+    background: var(--acento); color: var(--sobre-acento);
+    font: italic 400 1.125rem/2rem var(--serif); text-align: center;
+  }
+  .pronto { color: var(--tinta-suave); }
+  .botao {
+    display: inline-block; max-width: 100%;
+    background: var(--acento); color: var(--sobre-acento);
+    font-weight: 600; text-decoration: none; text-align: center;
+    padding: .8rem 1.3rem; border-radius: 999px; margin: 0 0 1rem;
+  }
+  .botao:hover { filter: brightness(1.06); }
+  .lista { list-style: none; padding: 0; }
+  .lista li { position: relative; padding-left: 1.6rem; }
+  .lista li::before {
+    position: absolute; left: 0; top: 0; font-weight: 700;
+  }
+  .apaga li::before { content: "✓"; color: var(--folha); }
+  .item-fica { border-left: 3px solid var(--acento); padding: .1rem 0 .1rem 1rem; margin: 0 0 1.25rem; }
+  .item-fica p { margin: 0 0 .35rem; }
+  .item-fica > :last-child { margin-bottom: 0; }
+  .rotulo { font-weight: 650; }
+  .nota {
+    background: var(--superficie-alt); border-radius: 14px;
+    padding: .9rem 1rem; margin: 1rem 0; font-size: .9375rem;
+  }
+  .nota > :last-child { margin-bottom: 0; }
+  .rodape {
+    margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--linha);
+    color: var(--tinta-suave); font-size: .9375rem;
+  }
+  .rodape p { margin: 0 0 .4rem; }
+  @media print {
+    :root { --fundo: #fff; --superficie: #fff; --superficie-alt: #f2f2f2; --acento-suave: #f2f2f2; }
+    .pular, .atalhos, .botao { display: none; }
+    a { color: inherit; }
+    .cartao { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="pagina">
+
+<header>
+  <p class="marca">Ribeirão Preto</p>
+  <p class="sobrelinha">App da JMK Soluções</p>
+  <h1>Excluir sua conta</h1>
+  <p class="data">Última atualização: 4 de outubro de 2026</p>
+</header>
+
+<main id="conteudo">
+
+<p class="lead">Você pode excluir a sua conta do app Ribeirão Preto e os dados ligados a ela quando quiser, de graça, pelo próprio app ou por e-mail. Não há assinatura nem pagamento para cancelar: o app é gratuito.</p>
+
+<nav class="atalhos" aria-label="Formas de excluir">
+  <a class="atalho" href="#pelo-app"><strong>Pelo app</strong><span>Na hora, em poucos toques</span></a>
+  <a class="atalho" href="#por-email"><strong>Por e-mail, sem o app</strong><span>Para quem desinstalou ou não consegue entrar</span></a>
+</nav>
+
+<section class="cartao" id="pelo-app">
+  <h2>Pelo app</h2>
+  <ol class="passos">
+    <li>Abra o app Ribeirão Preto e toque na aba <strong>Mais</strong>.</li>
+    <li>Desça até <strong>Sua conta</strong>.</li>
+    <li>Toque em <strong>Excluir minha conta</strong>.</li>
+    <li>Leia o que sai e o que fica e confirme em <strong>Excluir</strong>.</li>
+    <li>Quando o app pedir, entre de novo com o Google ou a Apple. É só para confirmar que é você.</li>
+  </ol>
+  <p class="pronto">Pronto: a exclusão é feita na hora, e o app avisa quando termina. Se algum post ou comentário seu que outras pessoas veem não puder ser apagado naquele momento (por exemplo, por falta de internet), o app avisa e não exclui a conta, para você tentar de novo: sem a conta, ninguém mais conseguiria apagar aquele texto com o seu nome.</p>
+</section>
+
+<section class="cartao" id="por-email">
+  <h2>Por e-mail, sem o app</h2>
+  <p>Já desinstalou o app ou não consegue entrar na sua conta? Peça por e-mail. Não precisa instalar nada de novo.</p>
+  <p><a class="botao" href="mailto:suporte.jmk@gmail.com?subject=Excluir%20minha%20conta%20-%20App%20Ribeir%C3%A3o%20Preto&amp;body=E-mail%20da%20conta%20Google%20ou%20Apple%20usada%20no%20app%3A%20%0D%0ANome%20que%20aparecia%20na%20comunidade%20(se%20lembrar)%3A%20%0D%0A">Pedir a exclusão por e-mail</a></p>
+  <p>Escreva para <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a> com o assunto “Excluir minha conta” e informe:</p>
+  <ul>
+    <li>o e-mail da conta Google ou Apple que você usou no app (se usou “Ocultar meu e-mail”, da Apple, é o endereço que termina em <code>@privaterelay.appleid.com</code>);</li>
+    <li>se lembrar, o nome que aparecia nos seus posts e comentários.</li>
+  </ul>
+  <p>De preferência, escreva do e-mail da própria conta. Se não der, podemos pedir uma confirmação simples, para ter certeza de que o pedido é seu. A equipe faz a exclusão e responde em até 15 dias, confirmando quando terminar.</p>
+  <div class="nota">
+    <p>Depois de uma exclusão por e-mail, você mesmo pode tirar o acesso do app à sua conta: no Google, em <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>; no iPhone, nos Ajustes, tocando no seu nome e procurando “Iniciar Sessão com a Apple”.</p>
+  </div>
+</section>
+
+<section id="o-que-sai">
+  <h2>O que é apagado</h2>
+  <ul class="lista apaga">
+    <li>A sua conta de login: nome, e-mail, foto do Google e identificadores.</li>
+    <li>O seu perfil: o nome que você escolheu, quem você bloqueou e o aceite das regras.</li>
+    <li>A sua foto de perfil enviada pelo app.</li>
+    <li>Todos os seus posts, com as fotos, menos os que estiverem em análise pela moderação (veja abaixo).</li>
+    <li>Todos os seus comentários, nos posts e nos eventos, inclusive os que a moderação tirou do ar.</li>
+    <li>Todas as suas curtidas. O total de cada post diminui.</li>
+    <li>Todos os seus “Eu vou”. O total de cada evento diminui.</li>
+    <li>Todas as suas sugestões de evento.</li>
+    <li>Na exclusão pelo app, o acesso do app à sua conta Google ou Apple.</li>
+  </ul>
+  <p>O que fica só no celular (tema, favoritos, notícias lidas, a escolha sobre as estatísticas de uso e cópias para usar sem internet) não depende da conta: some quando você desinstala o app ou apaga os dados dele nos ajustes do celular.</p>
+</section>
+
+<section id="o-que-fica">
+  <h2>O que pode ficar, e por quê</h2>
+  <p>Algumas coisas ficam depois da exclusão, pelos motivos e prazos abaixo: para cumprir a lei (LGPD, art. 16, I), manter as regras da comunidade valendo para quem foi suspenso e responder a contestações e processos (LGPD, art. 7º, VI e IX). Nada disso é usado para outra coisa.</p>
+
+  <div class="item-fica">
+    <h3>Posts em análise pela moderação</h3>
+    <p>Se um post seu foi tirado do ar por denúncia e a equipe ainda não decidiu, ele fica guardado, visível só para a equipe, até a decisão. Depois, ele é apagado, a menos que precise ser guardado como prova (item seguinte).</p>
+    <p><span class="rotulo">Por quê:</span> excluir a conta não pode apagar um conteúdo que está sendo analisado.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Conteúdo guardado por obrigação legal</h3>
+    <p>Conteúdo de abuso ou exploração sexual de crianças e adolescentes é guardado como prova, com o nome e os identificadores da conta de quem publicou, com acesso restrito, e comunicado à Polícia Federal, como explicado nos <a href="padroes-de-seguranca-infantil.html">Padrões de segurança infantil</a>.</p>
+    <p><span class="rotulo">Até quando:</span> o texto e a foto ilegais, até a Polícia Federal validar a comunicação; depois, são apagados de vez. Os outros dados ligados ao caso, 6 meses (Lei nº 15.211/2025, art. 27, § 2º), ou mais, se uma autoridade pedir.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Denúncias que você fez e que a moderação ainda não analisou</h3>
+    <p>Ficam na fila sem o identificador da sua conta, até a equipe decidir sobre o conteúdo.</p>
+    <p><span class="rotulo">Por quê:</span> apagá-las tiraria da fila denúncias de conteúdo proibido. O código da sua identidade de login continua no identificador interno da denúncia, para que a mesma pessoa não denuncie o mesmo conteúdo de novo com uma conta nova.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Ligação da conta com o login</h3>
+    <p>Fica o identificador da conta no app ligado ao código da sua identidade de login, sem nome, e-mail nem texto.</p>
+    <p><span class="rotulo">Por quê:</span> é por ela que a moderação mantém a suspensão de quem desrespeita as regras, mesmo que a pessoa apague a conta e entre de novo com o mesmo login.</p>
+    <p><span class="rotulo">Até quando:</span> enquanto puder ser necessária para uma denúncia ou suspensão; a equipe apaga as que não servem mais na limpeza que faz a cada 3 meses.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Registro de limites de uso</h3>
+    <p>Se alguma contagem ainda estiver aberta (isso só acontece se você postou, comentou, curtiu, marcou “Eu vou”, denunciou, sugeriu ou mudou o perfil nas últimas 24 horas), o registro dos limites fica guardado pelo código da sua identidade de login: contagens, horários e o último item de cada tipo de ação, sem nome, e-mail nem texto.</p>
+    <p><span class="rotulo">Por quê:</span> excluir e refazer a conta não pode zerar os limites contra spam.</p>
+    <p><span class="rotulo">Até quando:</span> a contagem vale até a janela de 24 horas acabar; depois, o registro é apagado na limpeza que a equipe faz a cada 3 meses.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Registro de suspensão, só se a sua conta foi suspensa</h3>
+    <p>Ficam o código da identidade do login, o identificador da conta, o nome que aparecia nas publicações, o motivo e a data da suspensão.</p>
+    <p><span class="rotulo">Por quê:</span> impedir que a pessoa volte a participar com o mesmo login.</p>
+    <p><span class="rotulo">Até quando:</span> enquanto a suspensão valer. A equipe revê as suspensões a cada 3 meses, e você pode pedir revisão pelo <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Registro de moderação</h3>
+    <p>As decisões da equipe sobre o seu conteúdo ou a sua conta continuam no registro de moderação, que só a equipe vê: qual conteúdo foi afetado, o identificador da conta, o motivo, a data e quem decidiu, sem cópia do texto nem da foto.</p>
+    <p><span class="rotulo">Por quê:</span> responder a contestações e processos e prestar contas a autoridades.</p>
+    <p><span class="rotulo">Até quando:</span> 5 anos depois de cada decisão, o prazo para pedir na Justiça reparação por um serviço mal prestado (Código de Defesa do Consumidor, art. 27).</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Cópias de segurança e registros técnicos</h3>
+    <p>Depois da exclusão, os sistemas do Google (Firebase) levam até 180 dias para apagar os dados de vez, incluindo as cópias de segurança. O IP dos logins fica algumas semanas nos registros do Firebase Authentication. Os relatórios de falhas (90 dias) e as estatísticas de uso (2 meses) não são ligados à sua conta e somem nesses prazos.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Quando a lei exigir</h3>
+    <p>Se houver obrigação legal ou ordem judicial, guardamos só o que for exigido, pelo prazo exigido.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Conteúdo de outras pessoas</h3>
+    <p>Posts e comentários de outras pessoas não saem com a sua conta. Se algum fala de você ou expõe os seus dados, denuncie no app ou escreva para nós.</p>
+  </div>
+
+  <p>Os detalhes de cada dado estão na <a href="privacidade.html#retencao">Política de Privacidade</a>.</p>
+</section>
+
+<section id="parcial">
+  <h2>Quer apagar só alguns dados?</h2>
+  <p>Dá para apagar parte dos seus dados sem excluir a conta:</p>
+  <ul>
+    <li><strong>Um post:</strong> toque nos três pontinhos (⋮) do post e em Apagar meu post. A foto, os comentários e as curtidas saem junto. Post em análise só pode ser apagado depois da decisão da equipe.</li>
+    <li><strong>Um comentário:</strong> toque nos três pontinhos (⋮) do comentário e em Apagar meu comentário.</li>
+    <li><strong>Uma curtida ou um “Eu vou”:</strong> toque de novo no botão para desmarcar.</li>
+    <li><strong>A foto de perfil:</strong> em Perfil &gt; Ver perfil &gt; Editar perfil, toque em Remover foto.</li>
+    <li><strong>O nome que aparece na comunidade:</strong> em Perfil &gt; Ver perfil &gt; Editar perfil. Posts e comentários já publicados ficam com o nome antigo; apague-os se quiser.</li>
+    <li><strong>As estatísticas de uso:</strong> em Perfil &gt; Privacidade, desligue Enviar estatísticas de uso.</li>
+    <li><strong>Um bloqueio:</strong> abra o perfil da pessoa e toque em Desbloquear.</li>
+    <li><strong>Qualquer outro dado</strong>, como uma sugestão: peça pelo <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>.</li>
+    <li><strong>Parar de usar a conta neste celular:</strong> use a opção Sair. Os seus dados continuam guardados até você excluir a conta, e os seus posts continuam saindo sozinhos 90 dias depois de publicados.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <p>Ribeirão Preto · JMK Soluções</p>
+  <p>Veja também: <a href="privacidade.html">Política de Privacidade</a> · <a href="padroes-de-seguranca-infantil.html">Padrões de segurança infantil</a></p>
+</footer>
+
+</div>
+</body>
+</html>

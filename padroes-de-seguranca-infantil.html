@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F6F2EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Padrões de segurança infantil do app Ribeirão Preto, da JMK Soluções: tolerância zero com abuso e exploração sexual de crianças e adolescentes, como denunciar e o que fazemos.">
+<title>Padrões de segurança infantil – App Ribeirão Preto (JMK Soluções)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23B8472A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-style='italic' font-size='38' text-anchor='middle' fill='%23ffffff'%3ER%3C/text%3E%3C/svg%3E">
+<style>
+  /* Mesma paleta da política (lib/theme.dart). O texto suave e o link
+     são um tom mais escuros no claro para passar de 4,5:1 em todo fundo. */
+  :root {
+    color-scheme: light dark;
+    --fundo: #F6F2EC;
+    --superficie: #FFFFFF;
+    --superficie-alt: #EDE6DC;
+    --tinta: #1C1917;
+    --tinta-suave: #66605A;
+    --linha: #E4DCD1;
+    --acento: #B8472A;
+    --acento-texto: #A33F25;
+    --acento-suave: #F4E1D7;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #0F0E0D;
+      --superficie: #1A1816;
+      --superficie-alt: #252220;
+      --tinta: #F5F1EA;
+      --tinta-suave: #A8A29E;
+      --linha: #2E2A26;
+      --acento: #E0784F;
+      --acento-texto: #E0784F;
+      --acento-suave: #3A2219;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font: 400 1.0625rem/1.65 var(--sans);
+    overflow-wrap: break-word;
+  }
+  .pular {
+    position: absolute; left: -999px; top: 0;
+    background: var(--superficie); color: var(--tinta);
+    padding: .6rem .9rem; border-radius: 10px; z-index: 1;
+  }
+  .pular:focus { left: 1rem; top: 1rem; }
+  .pagina { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  @media (min-width: 40rem) { .pagina { padding: 3.5rem 1.5rem 5rem; } }
+  .marca {
+    margin: 0;
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.375rem; line-height: 1.2; color: var(--acento-texto);
+  }
+  .sobrelinha {
+    margin: .35rem 0 0;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--tinta-suave);
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.25rem, 9vw, 3.25rem); line-height: 1.05;
+    letter-spacing: -.01em; margin: 1.25rem 0 .6rem;
+  }
+  .data { margin: 0 0 2rem; color: var(--tinta-suave); font-size: .9375rem; }
+  .lead { font-size: 1.125rem; }
+  h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.15;
+    margin: 3rem 0 1rem; padding-top: 1.75rem;
+    border-top: 1px solid var(--linha);
+    scroll-margin-top: 1rem;
+  }
+  h2 .n { color: var(--acento-texto); font-style: italic; margin-right: .15em; }
+  h3 { font-size: 1.0625rem; font-weight: 650; line-height: 1.35; margin: 1.75rem 0 .6rem; }
+  .cartao h3 { margin-top: 0; }
+  p, ul, ol { margin: 0 0 1rem; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .35rem 0; }
+  a { color: var(--acento-texto); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 2px; }
+  strong { font-weight: 650; }
+  /* Ponto que o advogado precisa ver antes de publicar (docs/lojas.md). */
+  .revisar {
+    background: var(--acento-suave); color: var(--acento-texto);
+    font-size: .8125em; font-weight: 650; letter-spacing: .02em;
+    padding: .05em .35em; border-radius: 6px; white-space: nowrap;
+  }
+  .cartao {
+    background: var(--superficie); border: 1px solid var(--linha);
+    border-radius: 20px; padding: 1.1rem 1.15rem; margin: 0 0 .9rem;
+  }
+  .cartao > :last-child { margin-bottom: 0; }
+  .resumo { background: var(--acento-suave); border-color: transparent; margin-bottom: 2rem; }
+  .resumo .sobrelinha { margin: 0 0 .5rem; }
+  .resumo ul { padding-left: 1.1rem; }
+  .sumario { margin: 0 0 1rem; }
+  .sumario ol { columns: 2 15rem; column-gap: 2rem; padding-left: 1.5rem; margin: .5rem 0 0; }
+  .sumario li { margin: .2rem 0; break-inside: avoid; }
+  .nota {
+    border-left: 3px solid var(--acento); background: var(--superficie-alt);
+    border-radius: 0 14px 14px 0; padding: .95rem 1.05rem; margin: 1.25rem 0;
+  }
+  .nota > :last-child { margin-bottom: 0; }
+  .contato { font-style: normal; line-height: 1.7; }
+  .rodape {
+    margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--linha);
+    color: var(--tinta-suave); font-size: .9375rem;
+  }
+  .rodape p { margin: 0 0 .4rem; }
+  @media print {
+    :root { --fundo: #fff; --superficie: #fff; --superficie-alt: #f2f2f2; --acento-suave: #f2f2f2; }
+    .pular, .sumario { display: none; }
+    a { color: inherit; }
+    .cartao, .nota { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="pagina">
+
+<header>
+  <p class="marca">Ribeirão Preto</p>
+  <p class="sobrelinha">App da JMK Soluções</p>
+  <h1>Padrões de segurança infantil</h1>
+  <p class="data">Última atualização: 3 de outubro de 2026</p>
+</header>
+
+<main id="conteudo">
+
+<p class="lead">O app Ribeirão Preto, da JMK Soluções, tem tolerância zero com a exploração e o abuso sexual de crianças e adolescentes (em inglês, CSAE) e com qualquer material de abuso sexual infantil (CSAM). Esta página explica o que é proibido, como o app previne, como denunciar e o que fazemos quando isso acontece.</p>
+
+<section class="cartao resumo" aria-label="Resumo">
+  <p class="sobrelinha">Em poucas palavras</p>
+  <ul>
+    <li>O app é só para maiores de 18 anos: 18+ na App Store e, no Google Play, público-alvo de 18 anos ou mais, com acesso restrito a menores.</li>
+    <li>É proibido qualquer conteúdo ou conduta que sexualize, explore ou ponha em risco crianças e adolescentes.</li>
+    <li>Denuncie no app, nos três pontinhos do post ou do comentário, com o motivo “Envolve criança ou adolescente”, ou pelo e-mail <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>. Uma única denúncia já tira o conteúdo do ar.</li>
+    <li>Removemos o conteúdo, guardamos como prova, comunicamos à Polícia Federal e suspendemos a conta de quem publicou.</li>
+    <li>Uma criança ou um adolescente está em perigo agora? Ligue 190.</li>
+  </ul>
+</section>
+
+<nav class="sumario" aria-label="Sumário">
+  <p class="sobrelinha">Nesta página</p>
+  <ol>
+    <li><a href="#proibido">O que é proibido</a></li>
+    <li><a href="#prevencao">Como o app previne</a></li>
+    <li><a href="#denunciar">Como denunciar</a></li>
+    <li><a href="#acoes">O que fazemos</a></li>
+    <li><a href="#contato">Ponto de contato</a></li>
+    <li><a href="#leis">Leis que seguimos</a></li>
+  </ol>
+</nav>
+
+<section id="proibido">
+  <h2><span class="n">1</span> O que é proibido</h2>
+  <p>No app, é proibido, em posts, fotos, comentários, nomes, fotos de perfil ou de qualquer outra forma:</p>
+  <ul>
+    <li>imagens, vídeos, textos, desenhos, montagens ou conteúdo gerado por inteligência artificial que mostrem, sugiram ou descrevam nudez ou atividade sexual de pessoas com menos de 18 anos, ou que as sexualizem;</li>
+    <li>pedir, oferecer, trocar, vender ou indicar onde conseguir esse tipo de material;</li>
+    <li>aliciar (em inglês, <i>grooming</i>): aproximar-se de crianças ou adolescentes, no app ou fora dele, com intenção sexual, inclusive pedindo fotos, contato ou encontro;</li>
+    <li>sextorsão: ameaçar divulgar imagens íntimas para conseguir mais imagens, dinheiro ou favores;</li>
+    <li>tráfico ou exploração de crianças e adolescentes, inclusive a exploração sexual comercial;</li>
+    <li>comentários sexuais sobre crianças e adolescentes e conteúdo que normalize, incentive ou defenda o abuso;</li>
+    <li>publicar dados que identifiquem ou localizem uma criança ou um adolescente e possam pô-los em risco, como nome completo, escola, endereço ou rotina.</li>
+  </ul>
+  <p>Pessoas com menos de 18 anos não podem usar o app.</p>
+</section>
+
+<section id="prevencao">
+  <h2><span class="n">2</span> Como o app previne</h2>
+  <ul>
+    <li><strong>App só para adultos:</strong> o app é publicado só para maiores de 18 anos: com classificação 18+ na App Store e, no Google Play, com público-alvo de 18 anos ou mais e acesso restrito a menores. Cada loja barra, do jeito dela, quem ela identifica como menor de 18 anos. As regras da comunidade também dizem que o app é só para maiores de 18 anos, e a conta de menor de idade que a equipe identificar é excluída.</li>
+    <li><strong>Sem mensagens privadas:</strong> o app não tem conversa privada entre usuários. Tudo o que se publica fica à vista da comunidade e da moderação.</li>
+    <li><strong>Filtros antes de publicar:</strong> palavrões, links e telefones são recusados em posts, comentários e nomes; sem links e telefones, fica mais difícil levar a conversa para fora do app ou divulgar material. As fotos dos posts e de perfil passam por um filtro de nudez antes do envio: um modelo aberto de inteligência artificial (o nsfw_model, com licença MIT) que roda no próprio celular, sem mandar a foto a ninguém para a análise. A foto explícita é recusada, e a duvidosa de um post vai ao ar marcada para a equipe olhar.</li>
+    <li><strong>Fotos sem metadados:</strong> o app apaga das fotos os metadados (EXIF), inclusive a localização GPS, antes do envio.</li>
+    <li><strong>Limites de uso:</strong> cada pessoa tem um número máximo de posts, fotos, comentários e outras ações por dia.</li>
+    <li><strong>Suspensão que não se contorna:</strong> a suspensão vale pela identidade do login, e criar uma conta nova com o mesmo Google ou a mesma Apple não desfaz.</li>
+  </ul>
+</section>
+
+<section id="denunciar">
+  <h2><span class="n">3</span> Como denunciar</h2>
+
+  <h3>No app</h3>
+  <ul>
+    <li><strong>Post ou comentário:</strong> toque nos três pontinhos (⋮) e em Denunciar post ou Denunciar comentário. Escolha o motivo “Envolve criança ou adolescente”. Para nudez ou imagem íntima de adultos, use “Nudez ou conteúdo sexual” ou “Foto íntima sem consentimento”.</li>
+    <li><strong>Foto de perfil:</strong> abra o perfil da pessoa, toque nos três pontinhos (⋯) e escolha a opção de denunciar a foto de perfil. A denúncia vai direto para a fila da equipe.</li>
+    <li>Num post ou comentário, com esses motivos, uma única denúncia já tira o conteúdo do ar até a equipe analisar.</li>
+    <li>A denúncia é sigilosa: quem foi denunciado não fica sabendo quem denunciou.</li>
+    <li>Você também pode bloquear a pessoa, nos mesmos três pontinhos. Ela some do seu feed e dos comentários que você vê.</li>
+  </ul>
+
+  <h3>Por e-mail</h3>
+  <p>Escreva para <a href="mailto:suporte.jmk@gmail.com?subject=Seguran%C3%A7a%20infantil%20-%20App%20Ribeir%C3%A3o%20Preto">suporte.jmk@gmail.com</a> com o assunto “Segurança infantil”. Diga o nome de quem publicou, o grupo da comunidade, o dia e a hora aproximada e descreva o que você viu. Você não precisa ter conta no app para avisar.</p>
+  <div class="nota">
+    <p><strong>Não faça print, não baixe e não reencaminhe o material, nem para nós.</strong> Guardar ou compartilhar esse tipo de conteúdo é crime, mesmo com boa intenção. A equipe acha o conteúdo pela sua descrição.</p>
+  </div>
+
+  <h3>Fora do app</h3>
+  <ul>
+    <li><strong>Perigo imediato:</strong> ligue 190 (Polícia Militar).</li>
+    <li><strong>Disque 100</strong> (Disque Direitos Humanos): recebe denúncias de violência contra crianças e adolescentes, de graça, 24 horas por dia.</li>
+    <li><strong>SaferNet Brasil:</strong> denúncia anônima de crimes na internet em <a href="https://new.safernet.org.br/denuncie">new.safernet.org.br/denuncie</a>.</li>
+  </ul>
+</section>
+
+<section id="acoes">
+  <h2><span class="n">4</span> O que fazemos</h2>
+  <p>Quando recebemos uma denúncia ou ficamos sabendo, por qualquer meio, de conteúdo de abuso ou exploração sexual de crianças e adolescentes no app:</p>
+  <ul>
+    <li><strong>Tiramos do ar na hora.</strong> Num post ou comentário denunciado pelo app, isso já acontece automaticamente; a equipe analisa as denúncias em até 24 horas, todos os dias.</li>
+    <li><strong>Guardamos como prova</strong> o conteúdo (texto e foto), as datas, os motivos das denúncias, o nome e os identificadores da conta de quem publicou e, se ainda existir, o e-mail da conta, com acesso restrito a pessoas designadas da equipe. Quem publicou não consegue apagar esse conteúdo, nem excluindo a conta.</li>
+    <li><strong>Comunicamos à Polícia Federal</strong>, pelo sistema Nidus: em até 12 horas quando há risco imediato para uma criança, em até 72 horas quando o material parece novo e em até 7 dias nos outros casos, contando fins de semana e feriados.</li>
+    <li><strong>Apagamos o material ilegal</strong> depois que a Polícia Federal valida a comunicação, e guardamos os outros dados do caso por 6 meses, ou mais, se uma autoridade pedir.</li>
+    <li><strong>Suspendemos a conta</strong> pela identidade do login e apagamos a foto de perfil dela.</li>
+    <li><strong>Colaboramos com as autoridades</strong>, respondendo a pedidos e ordens judiciais.</li>
+    <li><strong>Não contamos a quem publicou</strong> que o caso foi comunicado à polícia: a comunicação é sigilosa (Decreto nº 12.880/2026, art. 38), e o aviso poderia atrapalhar a investigação.</li>
+    <li><strong>Registramos a decisão</strong> no registro de moderação, que só a equipe vê.</li>
+  </ul>
+  <p>Se descobrirmos que uma pessoa com menos de 18 anos está usando o app com uma conta, excluímos a conta, guardando só o que a lei mandar. O tratamento de dados nesses casos segue a nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
+</section>
+
+<section id="contato">
+  <h2><span class="n">5</span> Ponto de contato</h2>
+  <p>A pessoa responsável pelo app e por falar sobre as práticas dele contra o abuso sexual infantil e sobre o cumprimento destes padrões, inclusive com autoridades, é:</p>
+  <address class="contato">
+    <strong>[SEU NOME COMPLETO]</strong><br>
+    JMK Soluções · Ribeirão Preto (SP)<br>
+    E-mail: <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>
+  </address>
+</section>
+
+<section id="leis">
+  <h2><span class="n">6</span> Leis que seguimos</h2>
+  <ul>
+    <li><strong>Estatuto da Criança e do Adolescente</strong> (ECA, Lei nº 8.069/1990), que define como crimes produzir, vender, divulgar, comprar, guardar e simular material de abuso sexual infantil e aliciar crianças pela internet (arts. 240 a 241-E).</li>
+    <li><strong>Estatuto Digital da Criança e do Adolescente</strong> (ECA Digital, Lei nº 15.211/2025), que obriga a remover esse tipo de conteúdo, comunicá-lo às autoridades e guardar os dados ligados a ele (art. 27), e o Decreto nº 12.880, de 18 de março de 2026, que o regulamenta (arts. 36 a 40).</li>
+    <li><strong>Portaria MJSP nº 1.312, de 24 de setembro de 2026</strong>, que define como as empresas comunicam esses casos ao Centro Nacional de Proteção à Criança e ao Adolescente, da Polícia Federal, pelo sistema Nidus, e o que fazem com o material depois.</li>
+    <li><strong>Marco Civil da Internet</strong> (Lei nº 12.965/2014), cujo prazo de guarda de 6 meses (art. 15) o ECA Digital adota para os dados desses casos.</li>
+    <li><strong>Lei Geral de Proteção de Dados Pessoais</strong> (LGPD, Lei nº 13.709/2018), para o tratamento dos dados envolvidos.</li>
+  </ul>
+  <p>Também seguimos as políticas de segurança infantil do Google Play e da App Store.</p>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <p>Ribeirão Preto · JMK Soluções</p>
+  <p>Veja também: <a href="privacidade.html">Política de Privacidade</a> · <a href="excluir-conta.html">Excluir sua conta</a></p>
+</footer>
+
+</div>
+</body>
+</html>

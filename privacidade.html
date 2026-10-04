@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F6F2EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Como o app Ribeirão Preto, da JMK Soluções, trata seus dados: o que guarda, para quê, com quem, por quanto tempo e como exercer seus direitos pela LGPD.">
+<title>Política de Privacidade – App Ribeirão Preto</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23B8472A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-style='italic' font-size='38' text-anchor='middle' fill='%23ffffff'%3ER%3C/text%3E%3C/svg%3E">
+<style>
+  /* Paleta "terra & café" do app (lib/theme.dart). O texto suave e o link
+     são um tom mais escuros no claro para passar de 4,5:1 em todo fundo. */
+  :root {
+    color-scheme: light dark;
+    --fundo: #F6F2EC;
+    --superficie: #FFFFFF;
+    --superficie-alt: #EDE6DC;
+    --tinta: #1C1917;
+    --tinta-suave: #66605A;
+    --linha: #E4DCD1;
+    --acento: #B8472A;
+    --acento-texto: #A33F25;
+    --acento-suave: #F4E1D7;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #0F0E0D;
+      --superficie: #1A1816;
+      --superficie-alt: #252220;
+      --tinta: #F5F1EA;
+      --tinta-suave: #A8A29E;
+      --linha: #2E2A26;
+      --acento: #E0784F;
+      --acento-texto: #E0784F;
+      --acento-suave: #3A2219;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font: 400 1.0625rem/1.65 var(--sans);
+    overflow-wrap: break-word;
+  }
+  .pular {
+    position: absolute; left: -999px; top: 0;
+    background: var(--superficie); color: var(--tinta);
+    padding: .6rem .9rem; border-radius: 10px; z-index: 1;
+  }
+  .pular:focus { left: 1rem; top: 1rem; }
+  .pagina { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  @media (min-width: 40rem) { .pagina { padding: 3.5rem 1.5rem 5rem; } }
+  .marca {
+    margin: 0;
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.375rem; line-height: 1.2; color: var(--acento-texto);
+  }
+  .sobrelinha {
+    margin: .35rem 0 0;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--tinta-suave);
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.25rem, 9vw, 3.25rem); line-height: 1.05;
+    letter-spacing: -.01em; margin: 1.25rem 0 .6rem;
+  }
+  .data { margin: 0 0 2rem; color: var(--tinta-suave); font-size: .9375rem; }
+  .lead { font-size: 1.125rem; }
+  h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.15;
+    margin: 3rem 0 1rem; padding-top: 1.75rem;
+    border-top: 1px solid var(--linha);
+    scroll-margin-top: 1rem;
+  }
+  h2 .n { color: var(--acento-texto); font-style: italic; margin-right: .15em; }
+  h3 { font-size: 1.0625rem; font-weight: 650; line-height: 1.35; margin: 1.75rem 0 .6rem; }
+  .cartao h3 { margin-top: 0; }
+  p, ul, ol { margin: 0 0 1rem; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .35rem 0; }
+  a { color: var(--acento-texto); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 2px; }
+  strong { font-weight: 650; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .875em; background: var(--superficie-alt);
+    padding: .08em .35em; border-radius: 6px; overflow-wrap: anywhere;
+  }
+  /* Ponto que o advogado precisa ver antes de publicar (docs/lojas.md). */
+  .revisar {
+    background: var(--acento-suave); color: var(--acento-texto);
+    font-size: .8125em; font-weight: 650; letter-spacing: .02em;
+    padding: .05em .35em; border-radius: 6px; white-space: nowrap;
+  }
+  .cartao {
+    background: var(--superficie); border: 1px solid var(--linha);
+    border-radius: 20px; padding: 1.1rem 1.15rem; margin: 0 0 .9rem;
+  }
+  .cartao > :last-child { margin-bottom: 0; }
+  .resumo { background: var(--acento-suave); border-color: transparent; margin-bottom: 2rem; }
+  .resumo .sobrelinha { margin: 0 0 .5rem; }
+  .resumo ul { padding-left: 1.1rem; }
+  .sumario { margin: 0 0 1rem; }
+  .sumario ol { columns: 2 15rem; column-gap: 2rem; padding-left: 1.5rem; margin: .5rem 0 0; }
+  .sumario li { margin: .2rem 0; break-inside: avoid; }
+  .onde { display: block; margin-top: .15rem; font-size: .875rem; font-weight: 400; color: var(--tinta-suave); }
+  .ficha { margin: 0; display: grid; grid-template-columns: 1fr; gap: 0 1rem; }
+  .ficha dt {
+    margin-top: .7rem;
+    font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--tinta-suave);
+  }
+  .ficha dt:first-child { margin-top: 0; }
+  .ficha dd { margin: .1rem 0 0; }
+  @media (min-width: 36rem) {
+    .ficha { grid-template-columns: 8.25rem 1fr; }
+    .ficha dt { margin-top: .55rem; padding-top: .2rem; }
+    .ficha dd { margin-top: .55rem; }
+    .ficha dt:first-of-type, .ficha dt:first-of-type + dd { margin-top: 0; }
+  }
+  .nota {
+    border-left: 3px solid var(--acento); background: var(--superficie-alt);
+    border-radius: 0 14px 14px 0; padding: .95rem 1.05rem; margin: 1.25rem 0;
+  }
+  .nota > :last-child { margin-bottom: 0; }
+  .contato { font-style: normal; line-height: 1.7; }
+  .rodape {
+    margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--linha);
+    color: var(--tinta-suave); font-size: .9375rem;
+  }
+  .rodape p { margin: 0 0 .4rem; }
+  @media print {
+    :root { --fundo: #fff; --superficie: #fff; --superficie-alt: #f2f2f2; --acento-suave: #f2f2f2; }
+    .pular, .sumario { display: none; }
+    a { color: inherit; }
+    .cartao, .nota { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="pagina">
+
+<header>
+  <p class="marca">Ribeirão Preto</p>
+  <p class="sobrelinha">App da JMK Soluções</p>
+  <h1>Política de Privacidade</h1>
+  <p class="data">Última atualização: 4 de outubro de 2026</p>
+</header>
+
+<main id="conteudo">
+
+<p class="lead">Esta política explica quais dados o app Ribeirão Preto trata, para quê, com quem, por quanto tempo e como você exerce os seus direitos pela Lei Geral de Proteção de Dados Pessoais (LGPD, Lei nº 13.709/2018). Ela vale para o app no Android e no iPhone e para estas páginas.</p>
+
+<section class="cartao resumo" aria-label="Resumo">
+  <p class="sobrelinha">Em poucas palavras</p>
+  <ul>
+    <li>O app é só para maiores de 18 anos: 18+ na App Store e, no Google Play, público-alvo de 18 anos ou mais, com acesso restrito a menores.</li>
+    <li>Notícias, lugares, clima e a agenda de eventos funcionam sem conta.</li>
+    <li>A sua localização só é pedida quando você quer ver os lugares mais perto, e é usada só no celular: não é enviada para ninguém nem fica guardada.</li>
+    <li>Com uma conta do Google ou da Apple, você marca “Eu vou”, sugere eventos e participa da comunidade: posts com texto e foto, comentários, curtidas e um perfil com nome e foto. O app não cria nem guarda senha.</li>
+    <li>O que você publica na comunidade (posts, fotos, comentários, nome e foto de perfil) aparece para quem usa o app, mesmo sem conta (e o app é para maiores de 18). O seu e-mail não aparece para ninguém. Curtidas e “Eu vou” são privados: os outros veem só os totais.</li>
+    <li>Posts, fotos, comentários dos posts e curtidas são apagados automaticamente 90 dias depois do post.</li>
+    <li>Para proteger a comunidade, há filtros (o de fotos roda no próprio celular), denúncias, bloqueio e suspensão de contas. Conteúdo de abuso ou exploração sexual de crianças e adolescentes é removido, guardado como prova e comunicado à Polícia Federal.</li>
+    <li>O app envia relatórios de falhas e, se você não desligar, estatísticas de uso, sem nome, e-mail nem conteúdo e sem ID de publicidade. Para desligar as estatísticas: Perfil &gt; Privacidade.</li>
+    <li>Não vendemos dados. O app não tem anúncios e não rastreia você em outros apps ou sites.</li>
+    <li>Para excluir a conta: Perfil &gt; Excluir minha conta, ou peça por e-mail (veja <a href="excluir-conta.html">Excluir sua conta</a>).</li>
+  </ul>
+</section>
+
+<nav class="sumario" aria-label="Sumário">
+  <p class="sobrelinha">Nesta página</p>
+  <ol>
+    <li><a href="#responsavel">Quem é o responsável</a></li>
+    <li><a href="#sem-conta">Usando o app sem conta</a></li>
+    <li><a href="#com-conta">Sua conta e a comunidade</a></li>
+    <li><a href="#protecao">Como a comunidade é protegida</a></li>
+    <li><a href="#estatisticas">Falhas e estatísticas de uso</a></li>
+    <li><a href="#finalidades">Para que usamos e com que base legal</a></li>
+    <li><a href="#terceiros">Com quem o app se conecta</a></li>
+    <li><a href="#transferencia">Dados fora do Brasil</a></li>
+    <li><a href="#retencao">Por quanto tempo guardamos</a></li>
+    <li><a href="#seguranca">Como protegemos os dados</a></li>
+    <li><a href="#direitos">Seus direitos</a></li>
+    <li><a href="#exclusao">Excluir sua conta</a></li>
+    <li><a href="#criancas">Crianças e adolescentes</a></li>
+    <li><a href="#mudancas">Mudanças nesta política</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ol>
+</nav>
+
+<section id="responsavel">
+  <h2><span class="n">1</span> Quem é o responsável</h2>
+  <p>O app Ribeirão Preto é publicado com o nome <strong>JMK Soluções</strong> por <strong>[SEU NOME COMPLETO]</strong>, pessoa física, de Ribeirão Preto (SP). Ele é o controlador dos seus dados: é quem decide como eles são tratados e responde por isso. Nesta política, “JMK” quer dizer ele. O app é independente: não tem ligação com a Prefeitura de Ribeirão Preto nem com outro órgão público.</p>
+  <p>Canal de privacidade: <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>. Use este e-mail para tirar dúvidas, fazer pedidos sobre os seus dados, contestar uma decisão da moderação ou avisar sobre conteúdo que expõe você.</p>
+  <p>Como agente de tratamento de pequeno porte, o app não tem um encarregado indicado (Resolução CD/ANPD nº 2/2022, art. 11): [SEU NOME COMPLETO] atende pessoalmente pelo canal acima.</p>
+</section>
+
+<section id="sem-conta">
+  <h2><span class="n">2</span> Usando o app sem conta</h2>
+  <p>Sem conta, a JMK não recebe o seu nome nem o seu e-mail. Dá para ver a comunidade, mas não para postar, comentar, curtir ou denunciar. Mesmo sem conta, algumas coisas acontecem:</p>
+  <ul>
+    <li><strong>No seu celular.</strong> O app guarda o tema escolhido, os lugares favoritos, as notícias que você já abriu, a sua escolha sobre as estatísticas de uso, se você recusou a localização e cópias das notícias, da previsão do tempo, da agenda e das fotos já vistas, para abrir rápido e funcionar sem internet. Se você entrou numa conta, a sessão também fica guardada no aparelho. Para mostrar a opção da Uber em “Como chegar”, o app confere no próprio celular se o app da Uber está instalado. Nada disso sai do aparelho, e tudo some quando você desinstala o app ou apaga os dados dele.</li>
+    <li><strong>Conexões com a internet.</strong> Para mostrar conteúdo, o celular busca dados em alguns serviços (veja a <a href="#terceiros">seção 7</a>). Como em qualquer acesso à internet, quem responde recebe o endereço IP do seu celular e dados técnicos da conexão, como o nome e a versão do app.</li>
+    <li><strong>Falhas e estatísticas de uso.</strong> Com ou sem conta, o app envia relatórios de falhas e, se você não desligar, estatísticas de uso (veja a <a href="#estatisticas">seção 5</a>).</li>
+    <li><strong>Verificação do app (App Check).</strong> Para proteger a agenda e a comunidade contra robôs e apps falsos, o app prova ao Firebase, do Google, que é o app original rodando num aparelho de verdade. No Android, quem atesta é o Google Play (Play Integrity); no iPhone, a Apple (App Attest). O atestado leva dados do app (como o nome do pacote, a versão, a assinatura e se ele veio da loja) e da integridade do aparelho, mas não o seu nome, o seu e-mail nem o conteúdo do celular. O Firebase confere o atestado, não o guarda e libera um código de acesso temporário.</li>
+    <li><strong>Localização.</strong> O app só pede a sua localização quando você toca em “Perto de mim” (numa categoria de comida) ou em “Ver o que tem perto de você” (na aba Comer), para pôr os lugares em ordem de distância. Ela é usada só no celular: não é enviada para a JMK nem para ninguém, não entra nas estatísticas de uso e não fica guardada; o app a esquece quando é fechado. Depois que você permite, a aba Comer lê a posição de novo quando você a abre, sem perguntar. O app pede uma precisão de uns cem metros e nunca usa a localização em segundo plano. Se você recusar, o celular guarda só essa resposta, para a aba Comer não pedir de novo. Para tirar a permissão, use os ajustes do celular. A previsão do tempo é sempre a do centro de Ribeirão Preto. As estatísticas de uso estimam a região aproximada pelo IP (<a href="#estatisticas">seção 5</a>). Em “Como chegar”, o app só abre o Google Maps, o Waze, o Apple Maps ou a Uber com o destino; dali em diante vale a política de cada um.</li>
+    <li><strong>Câmera e fotos.</strong> O app só pede acesso às fotos ou à câmera quando você escolhe uma foto para um post ou para o seu perfil, ou quando a equipe publica a foto de um evento. Ele usa só a foto que você escolher.</li>
+  </ul>
+</section>
+
+<section id="com-conta">
+  <h2><span class="n">3</span> Sua conta e a comunidade</h2>
+  <p>Para participar, você entra com a sua conta do Google (Android e iPhone) ou da Apple (iPhone). Quem confirma que é você é o Google ou a Apple: o app não cria nem guarda senha. Com a conta, você vê e curte o que a comunidade publica, marca “Eu vou” e sugere eventos. Para postar e comentar (nos posts e nos eventos), você também aceita as regras da comunidade, que o app mostra antes da sua primeira participação. As regras lembram que o app é só para maiores de 18 anos.</p>
+  <p>Veja o que guardamos, quem vê, para quê e até quando:</p>
+
+  <article class="cartao">
+    <h3>Sua conta de login <span class="onde">No Firebase Authentication, do Google</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>Nome (o do Google ou da Apple), e-mail, endereço da foto de perfil (só no Google), o identificador da sua conta no app, o identificador que o Google ou a Apple usam para o seu login e as datas de criação e do último acesso. Se você entrar com a Apple e escolher “Ocultar meu e-mail”, recebemos só um endereço de retransmissão da Apple. A Apple só manda o nome no primeiro login; se ele não vier, o app pergunta como você quer aparecer.</dd>
+      <dt>Quem vê</dt>
+      <dd>Você e a equipe que administra o app, no console do Firebase. O e-mail nunca aparece para outras pessoas.</dd>
+      <dt>Para quê</dt>
+      <dd>Entrar e manter você conectado e achar a sua conta se você pedir algo por e-mail. Nos casos de abuso sexual infantil, dados da conta de quem publicou podem ser guardados e comunicados à Polícia Federal (<a href="#protecao">seção 4</a>).</dd>
+      <dt>Até quando</dt>
+      <dd>Até você excluir a conta. O Google também registra o IP dos logins, por segurança, e o guarda por algumas semanas.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Seu perfil <span class="onde">No banco de dados do app (Cloud Firestore)</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O nome que você escolheu para aparecer, a lista de pessoas que você bloqueou, a data em que você aceitou as regras da comunidade e a versão da sua foto de perfil. O app não pede a sua idade nem a sua data de nascimento.</dd>
+      <dt>Quem vê</dt>
+      <dd>O nome aparece nos seus posts e comentários. O resto só você vê; a equipe tem acesso técnico.</dd>
+      <dt>Para quê</dt>
+      <dd>Mostrar você do jeito que escolheu, esconder de você quem você bloqueou e registrar o aceite das regras, que libera postar e comentar.</dd>
+      <dt>Até quando</dt>
+      <dd>Até você excluir a conta.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Foto de perfil <span class="onde">Nos servidores do Firebase (Cloud Storage), do Google</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>A foto que você escolhe no app. Antes de enviar, o celular corta, reduz e converte a foto (WebP) e apaga os metadados dela (EXIF), inclusive a localização GPS. Se você não enviar uma foto, aparece a da sua conta Google; quem entra com a Apple aparece com as iniciais.</dd>
+      <dt>Quem vê</dt>
+      <dd>Quem usa o app, ao lado do seu nome nos posts, nos comentários e no seu perfil.</dd>
+      <dt>Para quê</dt>
+      <dd>Identificar você na comunidade.</dd>
+      <dt>Até quando</dt>
+      <dd>Até você trocar ou remover a foto (Editar perfil &gt; Remover foto), excluir a conta ou a equipe tirar a foto, por exemplo numa suspensão.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Ligação da conta com o login <span class="onde">No banco de dados do app (Cloud Firestore)</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O identificador da sua conta no app, o código da sua identidade de login (explicado mais abaixo) e a data em que a ligação foi feita, na primeira participação. Nem você nem ninguém fora da equipe pode alterá-la ou apagá-la.</dd>
+      <dt>Quem vê</dt>
+      <dd>Você e a equipe de moderação.</dd>
+      <dt>Para quê</dt>
+      <dd>Permitir a suspensão de quem desrespeita as regras, mesmo que a pessoa apague o perfil ou a conta logo depois de publicar.</dd>
+      <dt>Até quando</dt>
+      <dd>Continua depois da exclusão da conta, sem nome, e-mail nem texto, enquanto puder ser necessária para uma denúncia ou suspensão. A equipe apaga as que não servem mais na limpeza que faz a cada 3 meses.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Posts e fotos <span class="onde">Na comunidade, para quem usa o app</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O texto, a foto (se houver), o grupo do assunto, o lugar onde você diz que está (um restaurante do guia, um evento da agenda ou um nome que você escreve), a data, o seu nome, a sua foto de perfil, o identificador da sua conta, quantas curtidas, comentários e denúncias o post tem e se ele foi marcado pelo filtro de fotos ou tirado do ar pela moderação. Antes de enviar, o celular reduz a foto (WebP), apaga os metadados dela (EXIF), inclusive a localização GPS, e cria uma prévia borrada bem pequena.</dd>
+      <dt>Quem vê</dt>
+      <dd>Todas as pessoas que entraram no app com uma conta. O identificador da conta não aparece na tela; ele serve para abrir o seu perfil e para outras pessoas poderem bloquear você, e não revela o seu e-mail nem o seu login no Google ou na Apple. Pense antes de dizer onde você está: o lugar aparece no post.</dd>
+      <dt>Para quê</dt>
+      <dd>Compartilhar o rolê, as dicas e o que acontece na cidade.</dd>
+      <dt>Até quando</dt>
+      <dd>O post some do app 90 dias depois de publicado e é apagado automaticamente com a foto, os comentários e as curtidas; os sistemas levam até 2 dias para terminar a remoção. Antes disso, ele sai se você o apagar (três pontinhos ⋮ &gt; Apagar meu post), excluir a conta ou a equipe removê-lo. As exceções, como posts em análise e conteúdo guardado como prova, estão na <a href="#protecao">seção 4</a>.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Comentários <span class="onde">Nos posts e nos eventos, para quem usa o app</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O texto, a data, o seu nome, a sua foto de perfil, o identificador da sua conta e quantas denúncias o comentário recebeu, sem dizer de quem.</dd>
+      <dt>Quem vê</dt>
+      <dd>Quem usa o app, no post ou na página do evento.</dd>
+      <dt>Para quê</dt>
+      <dd>Conversar sobre os posts e os eventos.</dd>
+      <dt>Até quando</dt>
+      <dd>Nos posts, saem junto com o post (no máximo 90 dias). Nos eventos, ficam até você apagar o comentário (três pontinhos ⋮ &gt; Apagar meu comentário), excluir a conta ou a equipe apagar o comentário ou o evento. Um comentário tirado do ar pela moderação some para todos, mas continua guardado, visível só para a equipe, até uma dessas coisas acontecer.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Curtidas <span class="onde">Privadas</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O registro de que você curtiu um post, com a data, o identificador da sua conta e o código da sua identidade de login.</dd>
+      <dt>Quem vê</dt>
+      <dd>Só você sabe o que curtiu. Os outros veem apenas o total de curtidas. A equipe tem acesso técnico ao registro, mas não o publica.</dd>
+      <dt>Para quê</dt>
+      <dd>Lembrar a sua curtida e somar o total do post. O código da identidade evita que a mesma pessoa conte duas vezes.</dd>
+      <dt>Até quando</dt>
+      <dd>Até você descurtir, excluir a conta ou o post ser apagado (no máximo 90 dias).</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>“Eu vou” <span class="onde">Privado</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O registro de que você vai a um evento, com a data, o identificador da sua conta e o código da sua identidade de login.</dd>
+      <dt>Quem vê</dt>
+      <dd>Só você. Os outros veem apenas o total de pessoas que vão. A equipe tem acesso técnico ao registro, mas não o publica.</dd>
+      <dt>Para quê</dt>
+      <dd>Lembrar a sua escolha e somar o total do evento. O código da identidade evita que a mesma pessoa conte duas vezes.</dd>
+      <dt>Até quando</dt>
+      <dd>Até você desmarcar, excluir a conta ou o evento ser apagado.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Denúncias <span class="onde">Só para a moderação</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O que você denunciou (um post, um comentário ou uma foto de perfil), o identificador da conta de quem publicou, o motivo escolhido numa lista, a data, o identificador da sua conta e o código da sua identidade de login.</dd>
+      <dt>Quem vê</dt>
+      <dd>A equipe de moderação. Quem foi denunciado não fica sabendo quem denunciou.</dd>
+      <dt>Para quê</dt>
+      <dd>Analisar o conteúdo e, se for o caso, tirá-lo do ar ou suspender quem publicou. Nos motivos graves, o conteúdo sai do ar na hora (<a href="#protecao">seção 4</a>). A equipe analisa as denúncias em até 24 horas.</dd>
+      <dt>Até quando</dt>
+      <dd>Até a equipe decidir sobre o conteúdo (aí as denúncias dele saem da fila) ou o conteúdo ser apagado. Se você excluir a conta antes disso, o identificador da sua conta sai da denúncia, e ela continua na fila até a decisão. O código da identidade continua no identificador interno da denúncia, para que a mesma pessoa não denuncie o mesmo conteúdo de novo com uma conta nova.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Sugestões de evento <span class="onde">Só para a equipe</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>O que você escreveu no formulário (nome do evento, quando, onde, link e detalhes), a data e o identificador da sua conta. Não ponha telefone nem dados de outras pessoas nos detalhes.</dd>
+      <dt>Quem vê</dt>
+      <dd>A equipe.</dd>
+      <dt>Para quê</dt>
+      <dd>Avaliar e, se fizer sentido, publicar o evento na agenda. O que vai ao ar são as informações do evento, nunca os seus dados.</dd>
+      <dt>Até quando</dt>
+      <dd>Até a equipe tirar a sugestão da fila ou você excluir a conta.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Limites de uso <span class="onde">Proteção contra spam</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>Para cada tipo de ação (postar, enviar foto, comentar, curtir, marcar “Eu vou”, denunciar, sugerir e mudar o perfil): quantas vezes você fez nas últimas 24 horas, quando a contagem começou, quando foi a última vez e qual foi o último item afetado. Fica guardado pelo código da sua identidade de login, sem nome, e-mail nem texto.</dd>
+      <dt>Quem vê</dt>
+      <dd>Ninguém em público. O app consulta para avisar quando você chega ao limite, e a equipe tem acesso técnico.</dd>
+      <dt>Para quê</dt>
+      <dd>Evitar spam e abuso: por exemplo, no máximo 10 posts, 5 fotos, 30 comentários e 200 curtidas por dia.</dd>
+      <dt>Até quando</dt>
+      <dd>Cada contagem vale 24 horas. Ao excluir a conta, o app apaga o registro se nenhuma contagem estiver aberta; se alguma estiver, ele fica, para que excluir e refazer a conta não zere os limites. Registros sem atividade há mais de 24 horas são apagados na limpeza que a equipe faz a cada 3 meses.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Suspensões <span class="onde">Só para a moderação</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>Quando a moderação suspende (bane) alguém por desrespeitar as regras: o código da identidade do login, o identificador da conta, o nome que aparecia nas publicações, o motivo, a data e quem da equipe suspendeu. A foto de perfil enviada pelo app é apagada na suspensão.</dd>
+      <dt>Quem vê</dt>
+      <dd>A equipe. Quem foi suspenso fica sabendo pelo app, ao tentar participar.</dd>
+      <dt>Para quê</dt>
+      <dd>Impedir que a pessoa volte a participar, inclusive excluindo a conta e entrando de novo com o mesmo login.</dd>
+      <dt>Até quando</dt>
+      <dd>Enquanto a suspensão valer, mesmo depois de a conta ser excluída. A equipe revê as suspensões a cada 3 meses, e você pode pedir revisão a qualquer momento pelo canal de privacidade.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Registro de moderação <span class="onde">Só para a equipe</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>Cada decisão da equipe sobre um conteúdo ou uma conta (manter, tirar do ar, apagar, tirar a foto de perfil, suspender, desfazer uma suspensão, guardar como prova): qual conteúdo foi afetado (pelo endereço interno dele), o identificador da conta de quem publicou, o motivo, quantas denúncias havia e desde quando, a data e quem da equipe decidiu. O registro não guarda cópia do texto nem da foto.</dd>
+      <dt>Quem vê</dt>
+      <dd>A equipe. Ninguém altera nem apaga um registro pelo app.</dd>
+      <dt>Para quê</dt>
+      <dd>Decidir de forma consistente, responder a quem contesta uma decisão, prestar contas a autoridades e defender a JMK e quem usa o app em reclamações e processos.</dd>
+      <dt>Até quando</dt>
+      <dd>5 anos depois da decisão, mesmo que a conta seja excluída. É o prazo para pedir na Justiça reparação por um serviço mal prestado (Código de Defesa do Consumidor, art. 27).</dd>
+    </dl>
+  </article>
+
+  <div class="nota">
+    <p><strong>O que é o código da identidade de login.</strong> É um resumo criptográfico (SHA-256) do identificador que o Google ou a Apple usam para o seu login. Ele não mostra o seu nome nem o seu e-mail, e não aparece em nada público. Como é sempre o mesmo para o mesmo login, ele faz os limites de uso, as suspensões e a regra de “uma denúncia por pessoa” continuarem valendo quando alguém exclui a conta e entra de novo. Mesmo assim, é um dado pessoal pseudonimizado, e o tratamos como tal.</p>
+  </div>
+
+  <h3>Se você é da equipe</h3>
+  <p>O app guarda qual conta da equipe criou e editou cada evento e quem tomou cada decisão de moderação, e a lista de quem tem acesso ao painel fica no Firebase. As fotos de evento enviadas pelo painel são reduzidas e perdem os metadados (EXIF) no próprio celular, inclusive a localização GPS. Depois de publicadas, elas são públicas na agenda.</p>
+
+  <h3>Se você escrever para nós</h3>
+  <p>Usamos o seu e-mail e a sua mensagem só para responder e resolver o pedido. Guardamos a conversa pelo tempo necessário para isso e para comprovar o atendimento, por exemplo, que uma exclusão foi feita.</p>
+
+  <h3>Quando você abre estas páginas</h3>
+  <p>Elas ficam no GitHub Pages, do GitHub (Microsoft), que recebe o seu IP e dados do navegador e registra o IP por segurança, pelo prazo da <a href="https://docs.github.com/pt/site-policy/privacy-policies/github-general-privacy-statement">política do GitHub</a>. As páginas não usam cookies nem scripts.</p>
+</section>
+
+<section id="protecao">
+  <h2><span class="n">4</span> Como a comunidade é protegida</h2>
+  <p>O app é só para adultos, e a comunidade tem regras. Para que elas valham, o app e a equipe usam:</p>
+  <ul>
+    <li><strong>Só para maiores de 18 anos:</strong> o app é publicado só para maiores de 18 anos: com classificação 18+ na App Store e, no Google Play, com público-alvo de 18 anos ou mais e acesso restrito a menores. Cada loja barra, do jeito dela, quem ela identifica como menor de 18 anos. As regras da comunidade também dizem isso. O app não tem conteúdo proibido para menores (pornografia é proibida e filtrada), então não pede documento nem a sua idade. Se a equipe identificar que uma conta é de alguém com menos de 18 anos, ela exclui a conta.</li>
+    <li><strong>Filtro de texto:</strong> posts, comentários, nomes e o lugar do post com palavrões ou ofensas, links ou telefones são recusados antes de ir ao ar, e nomes que imitam a equipe do app ou a prefeitura também. O app confere tudo isso antes de enviar, e o servidor confere de novo os palavrões (por uma lista), os links, os telefones e o tamanho de cada campo.</li>
+    <li><strong>Filtro de nudez nas fotos:</strong> antes de enviar uma foto, o próprio celular a analisa com um modelo aberto de inteligência artificial que vem dentro do app (o nsfw_model, com licença MIT). A análise acontece no aparelho: a foto não é enviada a ninguém para isso, e só sai do celular se for publicada. Foto explícita é recusada, no post e na foto de perfil. A foto duvidosa de um post vai ao ar, mas fica marcada para a equipe olhar; a de perfil passa, e a denúncia de foto de perfil cuida do resto.</li>
+    <li><strong>Limites de uso</strong> por pessoa (<a href="#com-conta">seção 3</a>).</li>
+    <li><strong>Denúncias:</strong> cada post e cada comentário tem a opção de denunciar nos três pontinhos (⋮), e a foto de perfil se denuncia no perfil da pessoa (⋯). Os motivos são: ofensa ou discurso de ódio; assédio ou ameaça; spam ou propaganda; informação falsa; nudez ou conteúdo sexual; envolve criança ou adolescente; foto íntima sem consentimento; violência ou conteúdo chocante; golpe ou crime; e outro. Num post ou comentário, com os motivos “Nudez ou conteúdo sexual”, “Envolve criança ou adolescente” e “Foto íntima sem consentimento”, uma única denúncia já tira o conteúdo do ar até a equipe analisar; com os outros motivos, isso acontece com 3 denúncias de pessoas diferentes. A denúncia de foto de perfil vai direto para a fila da equipe, que tira a foto se for o caso. A equipe analisa as denúncias em até 24 horas.</li>
+    <li><strong>Bloqueio:</strong> quem você bloqueia some do seu feed e dos comentários que você vê. A pessoa não é avisada.</li>
+    <li><strong>Suspensão:</strong> pela identidade do login. Excluir a conta e entrar de novo com o mesmo Google ou a mesma Apple não desfaz a suspensão.</li>
+    <li><strong>Registro de moderação:</strong> cada decisão da equipe fica registrada (<a href="#com-conta">seção 3</a>).</li>
+  </ul>
+  <p>Se alguém publicar uma foto íntima sua, denuncie com o motivo “Foto íntima sem consentimento” ou escreva para <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>. O conteúdo sai do ar na hora da denúncia.</p>
+
+  <h3>Posts em análise</h3>
+  <p>Um post tirado do ar por denúncia fica em análise: só quem publicou e a equipe o veem. Até a equipe decidir, quem publicou não consegue apagá-lo, e ele não sai nem com a exclusão da conta. Depois da decisão, o post volta ao ar, é apagado ou, se for o caso, é guardado como prova, como explicado a seguir.</p>
+
+  <h3>Abuso e exploração sexual de crianças e adolescentes</h3>
+  <p>A tolerância é zero. Quando a equipe identifica esse tipo de conteúdo, ela:</p>
+  <ul>
+    <li>tira o conteúdo do ar na hora;</li>
+    <li>guarda como prova, com acesso restrito a pessoas designadas da equipe e mesmo que a conta seja excluída, o conteúdo (texto e foto), as datas, os motivos das denúncias, o nome e os identificadores da conta de quem publicou e, se ainda existir, o e-mail da conta;</li>
+    <li>comunica o caso à Polícia Federal, pelo sistema Nidus, nos prazos da Portaria MJSP nº 1.312/2026 (de 12 horas a 7 dias, conforme a urgência);</li>
+    <li>depois que a Polícia Federal valida a comunicação, apaga de vez o texto e a foto ilegais e guarda os outros dados por 6 meses, como manda o Estatuto Digital da Criança e do Adolescente (Lei nº 15.211/2025, art. 27), ou por mais tempo, se uma autoridade pedir;</li>
+    <li>suspende a conta pela identidade do login.</li>
+  </ul>
+  <p>Os detalhes estão nos <a href="padroes-de-seguranca-infantil.html">Padrões de segurança infantil</a>.</p>
+
+  <h3>Decisões automáticas</h3>
+  <p>Algumas decisões do app são automáticas: a recusa de texto pelo filtro de texto, a recusa ou a marcação de foto pelo filtro de nudez, a saída do ar de conteúdo que atinge o número de denúncias e a recusa de ação acima do limite de uso. Se achar que uma decisão dessas foi errada, peça a revisão por uma pessoa da equipe pelo canal de privacidade (LGPD, art. 20).</p>
+</section>
+
+<section id="estatisticas">
+  <h2><span class="n">5</span> Falhas e estatísticas de uso</h2>
+  <p>Nas versões das lojas, o app usa duas ferramentas do Firebase, do Google, com ou sem conta:</p>
+
+  <article class="cartao">
+    <h3>Relatórios de falhas <span class="onde">Firebase Crashlytics</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>Quando o app trava ou encontra um erro que vale olhar: o rastro técnico do erro (stack trace), em que parte do app ele aconteceu, o código do erro, o estado do app e dados técnicos do aparelho naquele momento (como modelo, sistema e memória livre), a versão do app e um identificador da instalação do app, que não é o da sua conta. Não vão o seu nome, o seu e-mail, textos, fotos nem o identificador da sua conta.</dd>
+      <dt>Quem vê</dt>
+      <dd>A equipe, no console do Firebase.</dd>
+      <dt>Para quê</dt>
+      <dd>Achar e corrigir falhas. Não há chave para desligar: sem esses relatórios, não saberíamos que o app está travando.</dd>
+      <dt>Até quando</dt>
+      <dd>90 dias.</dd>
+    </dl>
+  </article>
+
+  <article class="cartao">
+    <h3>Estatísticas de uso <span class="onde">Google Analytics for Firebase</span></h3>
+    <dl class="ficha">
+      <dt>O que é</dt>
+      <dd>Quais abas e telas você abre e algumas ações (entrar, postar, com o grupo e se tinha foto, comentar, curtir, marcar “Eu vou” e usar o “Perto de mim”, sem a sua localização), a duração das sessões, dados técnicos do aparelho e do app (como modelo, sistema, idioma e versão do app), um identificador da instalação do app e a região aproximada (cidade ou estado), que o Google estima pelo IP e não guarda no Analytics. Não vão o seu nome, o seu e-mail, textos, fotos, a localização do celular nem o identificador da sua conta. O app não coleta o ID de publicidade do celular, e a personalização de anúncios está desligada.</dd>
+      <dt>Quem vê</dt>
+      <dd>A equipe, em relatórios com números somados, no console do Analytics.</dd>
+      <dt>Para quê</dt>
+      <dd>Saber o que é mais usado e melhorar o app.</dd>
+      <dt>Até quando</dt>
+      <dd>Os dados de cada evento ficam 2 meses. Relatórios com números somados, que não identificam ninguém, podem ficar mais tempo.</dd>
+    </dl>
+  </article>
+
+  <p><strong>Como desligar as estatísticas:</strong> Perfil &gt; Privacidade &gt; Enviar estatísticas de uso. A chave começa ligada. Desligada, o app para de enviar as estatísticas a partir daquele momento; o que já foi enviado segue os prazos acima. Os relatórios de falhas continuam.</p>
+</section>
+
+<section id="finalidades">
+  <h2><span class="n">6</span> Para que usamos e com que base legal</h2>
+  <ul>
+    <li><strong>Fazer o app funcionar para você:</strong> mostrar notícias, clima, lugares (e, quando você pede, os mais perto de você) e a agenda; manter a sua conta e o seu perfil; publicar e mostrar os seus posts, fotos e comentários; guardar as suas curtidas, “Eu vou”, bloqueios e sugestões; receber as suas denúncias; apagar os posts em 90 dias. Base legal: execução de contrato (LGPD, art. 7º, V), ou seja, o uso do app e as regras da comunidade que você aceita.</li>
+    <li><strong>Segurança e prevenção de abuso:</strong> verificação do app, limites de uso, código da identidade, filtros, denúncias, suspensões, registro de moderação e o que fica depois da exclusão da conta. Base legal: legítimo interesse (art. 7º, IX) da JMK e de quem usa o app em ter uma comunidade segura, sem spam nem golpe. Usamos só o necessário para isso (art. 10, § 1º), e você pode se opor pelo canal de privacidade (art. 18, § 2º).</li>
+    <li><strong>Proteger crianças e adolescentes:</strong> remover, guardar como prova e comunicar às autoridades conteúdo de abuso ou exploração sexual infantil. Base legal: cumprimento de obrigação legal (art. 7º, II, e, se houver dado sensível, art. 11, II, “a”), pelo art. 27 da Lei nº 15.211/2025, pelo Decreto nº 12.880/2026 e pela Portaria MJSP nº 1.312/2026.</li>
+    <li><strong>Relatórios de falhas e estatísticas de uso:</strong> legítimo interesse (art. 7º, IX) em manter o app funcionando e melhorá-lo, com o mínimo de dados, sem ligar nada à sua conta, sem anúncios e com a opção de desligar as estatísticas.</li>
+    <li><strong>Cumprir a lei e defender direitos:</strong> guardar ou entregar dados quando a lei ou uma ordem judicial exigir, e usá-los em processos (art. 7º, II e VI).</li>
+  </ul>
+  <p>O que não fazemos: vender dados, usar os seus dados para publicidade ou rastrear você em outros apps e sites. Se um dia o app passar a ter anúncios ou outra finalidade, atualizamos esta política e avisamos no app antes de a mudança valer.</p>
+</section>
+
+<section id="terceiros">
+  <h2><span class="n">7</span> Com quem o app se conecta</h2>
+
+  <h3>Google e Apple, para você entrar</h3>
+  <p>Quando você entra, o Google ou a Apple confirmam a sua identidade e mandam para o app o seu nome, o seu e-mail e, no caso do Google, o endereço da sua foto de perfil. O que eles fazem com a sua conta Google ou Apple segue a política de cada um: <a href="https://policies.google.com/privacy?hl=pt-BR">Google</a> e <a href="https://www.apple.com/br/legal/privacy/">Apple</a>. O Google Play (no Android) e a Apple (no iPhone) também fazem o atestado da verificação do app descrito na <a href="#sem-conta">seção 2</a>.</p>
+
+  <h3>Google (Firebase), que guarda e processa os dados do app</h3>
+  <p>O Firebase, do Google, guarda a sua conta (Firebase Authentication), o banco de dados do app (Cloud Firestore, em São Paulo) e as fotos dos posts e de perfil (Cloud Storage), confere a verificação do app (App Check), recebe os relatórios de falhas (Crashlytics) e as estatísticas de uso (Google Analytics for Firebase). O Google é nosso operador: trata esses dados em nosso nome, segundo as nossas instruções e os termos de processamento de dados do Firebase e do Google Analytics, que exigem medidas de segurança e a exclusão dos dados quando pedimos (<a href="https://firebase.google.com/support/privacy">privacidade no Firebase</a>). Nas estatísticas, o compartilhamento de dados com outros produtos do Google fica desligado. As bibliotecas do Firebase também mandam ao Google dados técnicos do aparelho (modelo, sistema, versões e a loja de onde o app foi instalado), que ele usa para manter o serviço.</p>
+  <p>Só compartilhamos dados pessoais com prestadores que tratam esses dados em nosso nome e se comprometem a protegê-los de forma igual ou maior que a desta política.</p>
+
+  <h3>Autoridades</h3>
+  <p>Entregamos dados a autoridades quando a lei manda, como na comunicação obrigatória à Polícia Federal descrita na <a href="#protecao">seção 4</a>, ou por ordem judicial. Entregamos só o que for exigido.</p>
+
+  <h3>Sites que o celular acessa direto, para buscar conteúdo</h3>
+  <p>Estes serviços recebem do seu celular o endereço IP, dados técnicos da conexão e qual conteúdo foi pedido, mas nunca o seu nome, o seu e-mail nem dados da sua conta. Cada um é responsável pelos próprios registros e segue a própria política.</p>
+  <ul>
+    <li><strong>MET Norway</strong> (Instituto Meteorológico da Noruega): a previsão do tempo. O pedido leva só as coordenadas fixas do centro de Ribeirão Preto. A MET informa que guarda o IP de quem pede nos registros de acesso, no data center dela em Oslo, na Noruega (<a href="https://www.met.no/en/About-us/privacy">política da MET</a>).</li>
+    <li><strong>Veículos de notícia:</strong> g1 e ge (Globo), ACidade ON, CBN Ribeirão, Tribuna Ribeirão e Jornal da USP, de onde o app lê as listas de notícias (RSS). Quando você toca numa notícia, a página do veículo abre no navegador dentro do app, e aí valem os cookies e a política do veículo.</li>
+    <li><strong>Meta (Facebook) e Wikimedia:</strong> muitos logos de restaurantes e lugares vêm de <code>graph.facebook.com</code> e de <code>commons.wikimedia.org</code>. Quando um lugar aparece na tela, numa lista ou na página dele, o celular baixa o logo de lá, e a Meta ou a Wikimedia ficam sabendo qual logo foi pedido, junto com o IP.</li>
+    <li><strong>Google, para as fotos de perfil do Google:</strong> quem não enviou uma foto pelo app aparece com a foto da conta Google, que é carregada de <code>lh3.googleusercontent.com</code>.</li>
+    <li><strong>Sites dos eventos:</strong> quando a foto de um evento é um link, ela é carregada do site de origem, como o do organizador ou o da bilheteria.</li>
+  </ul>
+
+  <h3>Links que você escolhe abrir</h3>
+  <p>Rotas no Google Maps, no Waze, no Apple Maps e na Uber; buscas no Google; Instagram, WhatsApp e sites dos lugares; ingressos e fontes dos eventos; créditos e licenças; ligações para telefones de emergência; e o compartilhamento do sistema. Ao tocar, você sai do app ou abre o navegador dentro dele, e dali em diante vale a política de quem recebe.</p>
+</section>
+
+<section id="transferencia">
+  <h2><span class="n">8</span> Dados fora do Brasil</h2>
+  <p>O banco de dados do app fica no Brasil, em São Paulo. Outras partes funcionam fora do país:</p>
+  <ul>
+    <li>as fotos dos posts e de perfil (Cloud Storage) ficam nos Estados Unidos;</li>
+    <li>o login (Firebase Authentication) é processado nos Estados Unidos;</li>
+    <li>os relatórios de falhas, as estatísticas de uso, a verificação do app e o login com o Google podem ser processados em qualquer país onde o Google tenha estrutura, como os Estados Unidos;</li>
+    <li>estas páginas ficam no GitHub Pages, que funciona fora do Brasil;</li>
+    <li>o login com a Apple e o App Attest são processados pela Apple, que pode fazer isso fora do Brasil;</li>
+    <li>a previsão do tempo vem da Noruega;</li>
+    <li>os veículos de notícia, a Meta e a Wikimedia usam servidores próprios, que podem estar fora do Brasil.</li>
+  </ul>
+  <p>Essas transferências seguem o art. 33 da LGPD. O Google, que trata os dados em nosso nome, se compromete por contrato a protegê-los: os termos de processamento de dados do Google Cloud, onde ficam o banco de dados e as fotos, incluem as cláusulas-padrão contratuais aprovadas pela ANPD (Resolução CD/ANPD nº 19/2024; art. 33, II, “b”). E as transferências são necessárias para prestar o serviço que você usa (art. 33, IX, combinado com o art. 7º, V).</p>
+</section>
+
+<section id="retencao">
+  <h2><span class="n">9</span> Por quanto tempo guardamos</h2>
+  <ul>
+    <li><strong>Conta e perfil:</strong> até você excluir a conta.</li>
+    <li><strong>Foto de perfil:</strong> até você trocar ou remover a foto, excluir a conta ou a equipe tirá-la.</li>
+    <li><strong>Posts, fotos, comentários dos posts e curtidas:</strong> 90 dias depois do post, com até 2 dias para a remoção automática terminar, ou antes, se você apagar, excluir a conta ou a equipe remover.</li>
+    <li><strong>Comentários nos eventos, “Eu vou” e sugestões:</strong> até você apagar ou excluir a conta, a equipe tirar da fila (no caso das sugestões) ou o evento ser apagado.</li>
+    <li><strong>Denúncias:</strong> até a moderação decidir sobre o conteúdo. Se você excluir a conta antes, a denúncia fica sem o identificador da sua conta até essa decisão.</li>
+    <li><strong>Posts em análise:</strong> até a equipe decidir, mesmo que a conta seja excluída.</li>
+    <li><strong>Prova de abuso ou exploração sexual infantil:</strong> o texto e a foto ilegais, até a Polícia Federal validar a comunicação; depois, eles são apagados de vez. Os outros dados ligados ao caso, 6 meses (Lei nº 15.211/2025, art. 27, § 2º), ou mais, se uma autoridade pedir.</li>
+    <li><strong>Ligação da conta com o login:</strong> enquanto puder ser necessária para uma denúncia ou suspensão, mesmo depois da exclusão da conta. A equipe apaga as que não servem mais a cada 3 meses.</li>
+    <li><strong>Limites de uso:</strong> cada contagem vale 24 horas. Registros sem atividade há mais de 24 horas são apagados na limpeza que a equipe faz a cada 3 meses.</li>
+    <li><strong>Suspensões:</strong> enquanto valerem, mesmo depois de a conta ser excluída. A equipe revê as suspensões a cada 3 meses.</li>
+    <li><strong>Registro de moderação:</strong> 5 anos depois de cada decisão (prazo do Código de Defesa do Consumidor, art. 27).</li>
+    <li><strong>Relatórios de falhas:</strong> 90 dias. <strong>Estatísticas de uso:</strong> 2 meses para os dados de cada evento; relatórios com números somados podem ficar mais tempo.</li>
+    <li><strong>Dados no celular:</strong> até você desinstalar o app ou apagar os dados dele.</li>
+    <li><strong>Localização:</strong> não fica guardada. O app a usa enquanto está aberto e a esquece quando é fechado.</li>
+    <li><strong>Registros técnicos:</strong> o Firebase Authentication guarda o IP dos logins por algumas semanas, e o GitHub registra o IP de quem visita estas páginas pelo prazo da política dele. Depois que apagamos algo, os sistemas do Google, incluindo as cópias de segurança, levam até 180 dias para apagar de vez.</li>
+    <li><strong>Obrigação legal ou ordem judicial:</strong> pelo prazo que a lei ou a ordem determinar.</li>
+  </ul>
+</section>
+
+<section id="seguranca">
+  <h2><span class="n">10</span> Como protegemos os dados</h2>
+  <ul>
+    <li>Tudo o que o app envia e busca na internet vai por conexão criptografada (HTTPS).</li>
+    <li>Regras de acesso no banco de dados e nos arquivos: cada pessoa só mexe nos próprios dados, e só a equipe modera; curtidas, “Eu vou”, perfil, denúncias, sugestões, limites e suspensões não são públicos; e conteúdo tirado do ar não é lido por ninguém fora da equipe, além de quem publicou.</li>
+    <li>A verificação do app (App Check) dificulta o acesso de robôs e de apps falsos.</li>
+    <li>O painel da equipe só abre para contas cadastradas uma a uma no console do Firebase, com e-mail verificado.</li>
+    <li>O conteúdo guardado como prova fica com acesso restrito a pessoas designadas da equipe.</li>
+    <li>O app não guarda senhas: o login é feito pelo Google ou pela Apple.</li>
+    <li>As fotos perdem os metadados (EXIF), inclusive a localização GPS, antes do envio, e o filtro de nudez e o cálculo das distâncias do “Perto de mim” rodam no próprio celular.</li>
+    <li>Limites de uso e filtros automáticos contra spam, golpe e conteúdo proibido.</li>
+    <li>O Google criptografa os dados armazenados e segue as medidas de segurança dos termos do Firebase.</li>
+  </ul>
+  <p>Se acontecer um incidente de segurança que possa trazer risco ou dano relevante a você, avisamos você e a Autoridade Nacional de Proteção de Dados (ANPD), como manda a LGPD (art. 48).</p>
+</section>
+
+<section id="direitos">
+  <h2><span class="n">11</span> Seus direitos</h2>
+  <p>Pela LGPD (art. 18), você pode, a qualquer momento e de graça:</p>
+  <ul>
+    <li>confirmar se tratamos dados seus e ter acesso a eles;</li>
+    <li>corrigir dados incompletos, errados ou desatualizados (o nome e a foto você muda no app, em Perfil &gt; Ver perfil &gt; Editar perfil; posts e comentários já publicados ficam com o nome da época);</li>
+    <li>pedir a anonimização, o bloqueio ou a eliminação de dados desnecessários, excessivos ou tratados em desacordo com a lei;</li>
+    <li>pedir a portabilidade, ou seja, uma cópia dos seus dados em formato eletrônico;</li>
+    <li>pedir a eliminação dos seus dados, o que na prática é excluir a conta (<a href="#exclusao">seção 12</a>);</li>
+    <li>saber com quem compartilhamos dados (<a href="#terceiros">seção 7</a>);</li>
+    <li>se opor a um tratamento feito por legítimo interesse, se achar que ele desrespeita a lei; para as estatísticas de uso, basta desligá-las em Perfil &gt; Privacidade;</li>
+    <li>pedir a revisão de decisões automáticas (<a href="#protecao">seção 4</a>).</li>
+  </ul>
+  <p>Os tratamentos do app não dependem do seu consentimento, então não há um consentimento para revogar. Mas você pode parar quando quiser: desligue as estatísticas, tire a permissão de localização nos ajustes do celular, saia da conta ou exclua-a, e o app continua funcionando sem conta.</p>
+  <p><strong>Como pedir:</strong> escreva para <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>, de preferência do e-mail da sua conta Google ou Apple. Podemos pedir uma confirmação simples, para ter certeza de que o pedido é seu. Respondemos em até 15 dias. Se não ficar satisfeito, você pode reclamar à ANPD em <a href="https://www.gov.br/anpd">gov.br/anpd</a>.</p>
+</section>
+
+<section id="exclusao">
+  <h2><span class="n">12</span> Excluir sua conta</h2>
+  <p><strong>No app:</strong> Perfil &gt; Excluir minha conta. O app pede que você entre de novo com o Google ou a Apple, para confirmar que é você, e apaga na hora a conta, o perfil, a foto de perfil, os posts com as fotos, os comentários (inclusive os tirados do ar), as curtidas, os “Eu vou” e as sugestões. Ele também desconecta o app da sua conta Google ou revoga o acesso dele na sua conta Apple.</p>
+  <p><strong>Sem o app:</strong> peça pelo <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>. Respondemos em até 15 dias.</p>
+  <p>Podem ficar, pelos motivos e prazos da <a href="#retencao">seção 9</a>: posts em análise, conteúdo guardado como prova por obrigação legal, denúncias que você fez (sem o identificador da sua conta), a ligação da conta com o login (sem nome nem e-mail), o registro de limites com contagem aberta, o registro de suspensão, se houver, e as decisões de moderação sobre o seu conteúdo. Eles ficam só para cumprir a lei (LGPD, art. 16, I), manter as regras da comunidade valendo para quem foi suspenso e responder a contestações e processos (art. 7º, VI e IX), e só pelo tempo necessário. O passo a passo completo está em <a href="excluir-conta.html">Excluir sua conta</a>.</p>
+</section>
+
+<section id="criancas">
+  <h2><span class="n">13</span> Crianças e adolescentes</h2>
+  <p>O app Ribeirão Preto é só para maiores de 18 anos. Ele é publicado com classificação 18+ na App Store e, no Google Play, com público-alvo de 18 anos ou mais e acesso restrito a menores. Cada loja barra, do jeito dela, quem ela identifica como menor de 18 anos. As regras da comunidade também dizem que o app é só para adultos. O app não tem conteúdo proibido para menores, então não pede documento, idade nem data de nascimento, e não coleta de propósito dados de crianças ou adolescentes.</p>
+  <p>Se a equipe identificar que uma conta é de alguém com menos de 18 anos, ela exclui a conta e os dados, menos o que a lei mandar guardar. Se você é mãe, pai ou responsável e acredita que uma pessoa com menos de 18 anos está usando o app com uma conta, escreva para <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>.</p>
+  <p>Para denunciar conteúdo que envolva crianças ou adolescentes, veja os <a href="padroes-de-seguranca-infantil.html">Padrões de segurança infantil</a>.</p>
+</section>
+
+<section id="mudancas">
+  <h2><span class="n">14</span> Mudanças nesta política</h2>
+  <p>Quando esta política mudar, publicamos a nova versão nesta página, com a data atualizada no topo. Se a mudança for importante, como uma nova finalidade ou um novo parceiro, avisamos no app antes de ela valer.</p>
+</section>
+
+<section id="contato">
+  <h2><span class="n">15</span> Contato</h2>
+  <address class="contato">
+    <strong>[SEU NOME COMPLETO]</strong> (JMK Soluções), pessoa física<br>
+    Ribeirão Preto (SP)<br>
+    E-mail: <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>
+  </address>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <p>Ribeirão Preto · JMK Soluções</p>
+  <p>Veja também: <a href="excluir-conta.html">Excluir sua conta</a> · <a href="padroes-de-seguranca-infantil.html">Padrões de segurança infantil</a></p>
+</footer>
+
+</div>
+</body>
+</html>
