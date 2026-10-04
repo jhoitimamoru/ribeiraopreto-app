@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Como excluir a sua conta do app Ribeirão Preto, da JMK Soluções, pelo app ou por e-mail, e o que é apagado e o que fica.">
 <title>Excluir sua conta – App Ribeirão Preto (JMK Soluções)</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23B8472A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-style='italic' font-size='38' text-anchor='middle' fill='%23ffffff'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A2320'/%3E%3Ctext x='28' y='43' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='31' text-anchor='middle' fill='%23F5F2EC'%3Erp%3C/text%3E%3Ccircle cx='47.5' cy='39.5' r='4.5' fill='%23E07A50'/%3E%3C/svg%3E">
 <style>
   /* Mesma paleta da política (lib/theme.dart). O número dos passos e o
      botão usam texto escuro no tema escuro: branco sobre o laranja claro
@@ -29,7 +29,7 @@
     --sobre-acento: #FFFFFF;
     --folha: #3F5A45;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+    --titulo: var(--sans);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -65,7 +65,7 @@
   @media (min-width: 40rem) { .pagina { padding: 3.5rem 1.5rem 5rem; } }
   .marca {
     margin: 0;
-    font-family: var(--serif); font-style: italic;
+    font-family: var(--titulo); font-weight: 700;
     font-size: 1.375rem; line-height: 1.2; color: var(--acento-texto);
   }
   .sobrelinha {
@@ -74,14 +74,14 @@
     text-transform: uppercase; color: var(--tinta-suave);
   }
   h1 {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--titulo); font-weight: 700;
     font-size: clamp(2.25rem, 9vw, 3.25rem); line-height: 1.05;
     letter-spacing: -.01em; margin: 1.25rem 0 .6rem;
   }
   .data { margin: 0 0 2rem; color: var(--tinta-suave); font-size: .9375rem; }
   .lead { font-size: 1.125rem; }
   h2 {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--titulo); font-weight: 700;
     font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.15;
     margin: 3rem 0 1rem; padding-top: 1.75rem;
     border-top: 1px solid var(--linha);
@@ -131,7 +131,7 @@
     position: absolute; left: 0; top: -.05rem;
     width: 2rem; height: 2rem; border-radius: 50%;
     background: var(--acento); color: var(--sobre-acento);
-    font: italic 400 1.125rem/2rem var(--serif); text-align: center;
+    font: 700 1.125rem/2rem var(--titulo); text-align: center;
   }
   .pronto { color: var(--tinta-suave); }
   .botao {
@@ -192,8 +192,8 @@
 <section class="cartao" id="pelo-app">
   <h2>Pelo app</h2>
   <ol class="passos">
-    <li>Abra o app Ribeirão Preto e toque na aba <strong>Mais</strong>.</li>
-    <li>Desça até <strong>Sua conta</strong>.</li>
+    <li>Abra o app Ribeirão Preto e toque na aba <strong>Perfil</strong>, a última embaixo.</li>
+    <li>Desça até o fim, na parte <strong>Conta</strong>.</li>
     <li>Toque em <strong>Excluir minha conta</strong>.</li>
     <li>Leia o que sai e o que fica e confirme em <strong>Excluir</strong>.</li>
     <li>Quando o app pedir, entre de novo com o Google ou a Apple. É só para confirmar que é você.</li>
