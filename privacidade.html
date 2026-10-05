@@ -216,7 +216,7 @@
     <li><strong>Falhas e estatísticas de uso.</strong> Com ou sem conta, o app envia relatórios de falhas e, se você não desligar, estatísticas de uso (veja a <a href="#estatisticas">seção 5</a>).</li>
     <li><strong>Verificação do app (App Check).</strong> Para proteger a agenda e a comunidade contra robôs e apps falsos, o app prova ao Firebase, do Google, que é o app original rodando num aparelho de verdade. No Android, quem atesta é o Google Play (Play Integrity); no iPhone, a Apple (App Attest). O atestado leva dados do app (como o nome do pacote, a versão, a assinatura e se ele veio da loja) e da integridade do aparelho, mas não o seu nome, o seu e-mail nem o conteúdo do celular. O Firebase confere o atestado, não o guarda e libera um código de acesso temporário.</li>
     <li><strong>Localização.</strong> O app só pede a sua localização quando você toca em “Perto de mim” (numa categoria de comida) ou em “Ver o que tem perto de você” (na aba Comer), para pôr os lugares em ordem de distância. Ela é usada só no celular: não é enviada para a JMK nem para ninguém, não entra nas estatísticas de uso e não fica guardada; o app a esquece quando é fechado. Depois que você permite, a aba Comer lê a posição de novo quando você a abre, sem perguntar. O app pede uma precisão de uns cem metros e nunca usa a localização em segundo plano. Se você recusar, o celular guarda só essa resposta, para a aba Comer não pedir de novo. Para tirar a permissão, use os ajustes do celular. A previsão do tempo é sempre a do centro de Ribeirão Preto. As estatísticas de uso estimam a região aproximada pelo IP (<a href="#estatisticas">seção 5</a>). Em “Como chegar”, o app só abre o Google Maps, o Waze, o Apple Maps ou a Uber com o destino; dali em diante vale a política de cada um.</li>
-    <li><strong>Câmera e fotos.</strong> O app só pede acesso às fotos ou à câmera quando você escolhe uma foto para um post ou para o seu perfil, ou quando a equipe publica a foto de um evento. Ele usa só a foto que você escolher.</li>
+    <li><strong>Câmera e fotos.</strong> O app só pede acesso às fotos ou à câmera quando você escolhe uma foto para um post, para o seu perfil ou para uma sugestão de evento, ou quando a equipe publica a foto de um evento. Ele usa só a foto que você escolher.</li>
   </ul>
 </section>
 
@@ -355,13 +355,13 @@
     <h3>Sugestões de evento <span class="onde">Só para a equipe</span></h3>
     <dl class="ficha">
       <dt>O que é</dt>
-      <dd>O que você escreveu no formulário (nome do evento, quando, onde, link e detalhes), a data e o identificador da sua conta. Não ponha telefone nem dados de outras pessoas nos detalhes.</dd>
+      <dd>O que você escreveu no formulário (nome do evento, quando, onde, link e detalhes), a foto, se você mandar uma (o cartaz ou a divulgação do evento), a data e o identificador da sua conta. A foto é reduzida e perde os metadados (EXIF), inclusive a localização GPS, no próprio celular, passa pelo filtro de nudez (<a href="#protecao">seção 4</a>) e fica no Cloud Storage. Não ponha telefone nem dados de outras pessoas nos detalhes, e mande só foto que pode ser divulgada.</dd>
       <dt>Quem vê</dt>
-      <dd>A equipe.</dd>
+      <dd>A equipe. Se o evento for publicado, a foto que você mandou pode virar a capa dele na agenda, que é pública; o seu nome e a sua conta não aparecem.</dd>
       <dt>Para quê</dt>
-      <dd>Avaliar e, se fizer sentido, publicar o evento na agenda. O que vai ao ar são as informações do evento, nunca os seus dados.</dd>
+      <dd>Avaliar e, se fizer sentido, publicar o evento na agenda. O que vai ao ar são as informações do evento (e, se for o caso, a foto), nunca os seus dados.</dd>
       <dt>Até quando</dt>
-      <dd>Até a equipe tirar a sugestão da fila ou você excluir a conta.</dd>
+      <dd>Até a equipe tirar a sugestão da fila ou você excluir a conta; a foto sai junto. A capa de um evento publicado fica enquanto o evento estiver na agenda.</dd>
     </dl>
   </article>
 
@@ -508,7 +508,7 @@
   <p>Quando você entra, o Google ou a Apple confirmam a sua identidade e mandam para o app o seu nome, o seu e-mail e, no caso do Google, o endereço da sua foto de perfil. O que eles fazem com a sua conta Google ou Apple segue a política de cada um: <a href="https://policies.google.com/privacy?hl=pt-BR">Google</a> e <a href="https://www.apple.com/br/legal/privacy/">Apple</a>. O Google Play (no Android) e a Apple (no iPhone) também fazem o atestado da verificação do app descrito na <a href="#sem-conta">seção 2</a>.</p>
 
   <h3>Google (Firebase), que guarda e processa os dados do app</h3>
-  <p>O Firebase, do Google, guarda a sua conta (Firebase Authentication), o banco de dados do app (Cloud Firestore, em São Paulo) e as fotos dos posts e de perfil (Cloud Storage), confere a verificação do app (App Check), recebe os relatórios de falhas (Crashlytics) e as estatísticas de uso (Google Analytics for Firebase). O Google é nosso operador: trata esses dados em nosso nome, segundo as nossas instruções e os termos de processamento de dados do Firebase e do Google Analytics, que exigem medidas de segurança e a exclusão dos dados quando pedimos (<a href="https://firebase.google.com/support/privacy">privacidade no Firebase</a>). Nas estatísticas, o compartilhamento de dados com outros produtos do Google fica desligado. As bibliotecas do Firebase também mandam ao Google dados técnicos do aparelho (modelo, sistema, versões e a loja de onde o app foi instalado), que ele usa para manter o serviço.</p>
+  <p>O Firebase, do Google, guarda a sua conta (Firebase Authentication), o banco de dados do app (Cloud Firestore, em São Paulo) e as fotos dos posts, de perfil e das sugestões de evento (Cloud Storage), confere a verificação do app (App Check), recebe os relatórios de falhas (Crashlytics) e as estatísticas de uso (Google Analytics for Firebase). O Google é nosso operador: trata esses dados em nosso nome, segundo as nossas instruções e os termos de processamento de dados do Firebase e do Google Analytics, que exigem medidas de segurança e a exclusão dos dados quando pedimos (<a href="https://firebase.google.com/support/privacy">privacidade no Firebase</a>). Nas estatísticas, o compartilhamento de dados com outros produtos do Google fica desligado. As bibliotecas do Firebase também mandam ao Google dados técnicos do aparelho (modelo, sistema, versões e a loja de onde o app foi instalado), que ele usa para manter o serviço.</p>
   <p>Só compartilhamos dados pessoais com prestadores que tratam esses dados em nosso nome e se comprometem a protegê-los de forma igual ou maior que a desta política.</p>
 
   <h3>Autoridades</h3>
@@ -532,7 +532,7 @@
   <h2><span class="n">8</span> Dados fora do Brasil</h2>
   <p>O banco de dados do app fica no Brasil, em São Paulo. Outras partes funcionam fora do país:</p>
   <ul>
-    <li>as fotos dos posts e de perfil (Cloud Storage) ficam nos Estados Unidos;</li>
+    <li>as fotos dos posts, de perfil e das sugestões de evento (Cloud Storage) ficam nos Estados Unidos;</li>
     <li>o login (Firebase Authentication) é processado nos Estados Unidos;</li>
     <li>os relatórios de falhas, as estatísticas de uso, a verificação do app e o login com o Google podem ser processados em qualquer país onde o Google tenha estrutura, como os Estados Unidos;</li>
     <li>estas páginas ficam no GitHub Pages, que funciona fora do Brasil;</li>
@@ -600,7 +600,7 @@
 
 <section id="exclusao">
   <h2><span class="n">12</span> Excluir sua conta</h2>
-  <p><strong>No app:</strong> Perfil &gt; Excluir minha conta. O app pede que você entre de novo com o Google ou a Apple, para confirmar que é você, e apaga na hora a conta, o perfil, a foto de perfil, os posts com as fotos, os comentários (inclusive os tirados do ar), as curtidas, os “Eu vou” e as sugestões. Ele também desconecta o app da sua conta Google ou revoga o acesso dele na sua conta Apple.</p>
+  <p><strong>No app:</strong> Perfil &gt; Excluir minha conta. O app pede que você entre de novo com o Google ou a Apple, para confirmar que é você, e apaga na hora a conta, o perfil, a foto de perfil, os posts com as fotos, os comentários (inclusive os tirados do ar), as curtidas, os “Eu vou” e as sugestões, com as fotos delas. Ele também desconecta o app da sua conta Google ou revoga o acesso dele na sua conta Apple.</p>
   <p><strong>Sem o app:</strong> peça pelo <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>. Respondemos em até 15 dias.</p>
   <p>Podem ficar, pelos motivos e prazos da <a href="#retencao">seção 9</a>: posts em análise, conteúdo guardado como prova por obrigação legal, denúncias que você fez (sem o identificador da sua conta), a ligação da conta com o login (sem nome nem e-mail), o registro de limites com contagem aberta, o registro de suspensão, se houver, e as decisões de moderação sobre o seu conteúdo. Eles ficam só para cumprir a lei (LGPD, art. 16, I), manter as regras da comunidade valendo para quem foi suspenso e responder a contestações e processos (art. 7º, VI e IX), e só pelo tempo necessário. O passo a passo completo está em <a href="excluir-conta.html">Excluir sua conta</a>.</p>
 </section>
