@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F6F2EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Suporte do app Ribeirão Preto, da JMK Soluções: como falar com a gente, denunciar, bloquear, sugerir um evento e excluir a conta.">
+<title>Suporte – App Ribeirão Preto (JMK Soluções)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A2320'/%3E%3Ctext x='28' y='43' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='31' text-anchor='middle' fill='%23F5F2EC'%3Erp%3C/text%3E%3Ccircle cx='47.5' cy='39.5' r='4.5' fill='%23E07A50'/%3E%3C/svg%3E">
+<style>
+  /* Mesma paleta da política (lib/theme.dart). O número dos passos e o
+     botão usam texto escuro no tema escuro: branco sobre o laranja claro
+     não passa de 4,5:1. */
+  :root {
+    color-scheme: light dark;
+    --fundo: #F6F2EC;
+    --superficie: #FFFFFF;
+    --superficie-alt: #EDE6DC;
+    --tinta: #1C1917;
+    --tinta-suave: #66605A;
+    --linha: #E4DCD1;
+    --acento: #B8472A;
+    --acento-texto: #A33F25;
+    --acento-suave: #F4E1D7;
+    --sobre-acento: #FFFFFF;
+    --folha: #3F5A45;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --titulo: var(--sans);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #0F0E0D;
+      --superficie: #1A1816;
+      --superficie-alt: #252220;
+      --tinta: #F5F1EA;
+      --tinta-suave: #A8A29E;
+      --linha: #2E2A26;
+      --acento: #E0784F;
+      --acento-texto: #E0784F;
+      --acento-suave: #3A2219;
+      --sobre-acento: #0F0E0D;
+      --folha: #8DB596;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font: 400 1.0625rem/1.65 var(--sans);
+    overflow-wrap: break-word;
+  }
+  .pular {
+    position: absolute; left: -999px; top: 0;
+    background: var(--superficie); color: var(--tinta);
+    padding: .6rem .9rem; border-radius: 10px; z-index: 1;
+  }
+  .pular:focus { left: 1rem; top: 1rem; }
+  .pagina { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  @media (min-width: 40rem) { .pagina { padding: 3.5rem 1.5rem 5rem; } }
+  .marca {
+    margin: 0;
+    font-family: var(--titulo); font-weight: 700;
+    font-size: 1.375rem; line-height: 1.2; color: var(--acento-texto);
+  }
+  .sobrelinha {
+    margin: .35rem 0 0;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--tinta-suave);
+  }
+  h1 {
+    font-family: var(--titulo); font-weight: 700;
+    font-size: clamp(2.25rem, 9vw, 3.25rem); line-height: 1.05;
+    letter-spacing: -.01em; margin: 1.25rem 0 .6rem;
+  }
+  .data { margin: 0 0 2rem; color: var(--tinta-suave); font-size: .9375rem; }
+  .lead { font-size: 1.125rem; }
+  h2 {
+    font-family: var(--titulo); font-weight: 700;
+    font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.15;
+    margin: 3rem 0 1rem; padding-top: 1.75rem;
+    border-top: 1px solid var(--linha);
+    scroll-margin-top: 1rem;
+  }
+  .cartao h2 { border-top: 0; padding-top: 0; margin: 0 0 .75rem; }
+  h3 { font-size: 1.0625rem; font-weight: 650; line-height: 1.35; margin: 0 0 .35rem; }
+  p, ul, ol { margin: 0 0 1rem; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .35rem 0; }
+  a { color: var(--acento-texto); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 2px; }
+  strong { font-weight: 650; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .875em; background: var(--superficie-alt);
+    padding: .08em .35em; border-radius: 6px; overflow-wrap: anywhere;
+  }
+  /* Ponto que o advogado precisa ver antes de publicar (docs/lojas.md). */
+  .revisar {
+    background: var(--acento-suave); color: var(--acento-texto);
+    font-size: .8125em; font-weight: 650; letter-spacing: .02em;
+    padding: .05em .35em; border-radius: 6px; white-space: nowrap;
+  }
+  .cartao {
+    background: var(--superficie); border: 1px solid var(--linha);
+    border-radius: 20px; padding: 1.25rem 1.2rem; margin: 0 0 1rem;
+  }
+  .cartao > :last-child { margin-bottom: 0; }
+  .atalhos { display: grid; gap: .75rem; margin: 0 0 1rem; }
+  @media (min-width: 36rem) { .atalhos { grid-template-columns: 1fr 1fr; } }
+  .atalho {
+    display: block; text-decoration: none; color: var(--tinta);
+    background: var(--acento-suave); border-radius: 18px; padding: .9rem 1rem;
+  }
+  .atalho strong { display: block; color: var(--acento-texto); }
+  .atalho span { font-size: .9375rem; color: var(--tinta-suave); }
+  .atalho:hover strong { text-decoration: underline; }
+  .passos { list-style: none; counter-reset: passo; padding: 0; margin: 0 0 1rem; }
+  .passos li {
+    counter-increment: passo; position: relative;
+    padding-left: 2.75rem; margin: .85rem 0; min-height: 2rem;
+  }
+  .passos li::before {
+    content: counter(passo);
+    position: absolute; left: 0; top: -.05rem;
+    width: 2rem; height: 2rem; border-radius: 50%;
+    background: var(--acento); color: var(--sobre-acento);
+    font: 700 1.125rem/2rem var(--titulo); text-align: center;
+  }
+  .pronto { color: var(--tinta-suave); }
+  .botao {
+    display: inline-block; max-width: 100%;
+    background: var(--acento); color: var(--sobre-acento);
+    font-weight: 600; text-decoration: none; text-align: center;
+    padding: .8rem 1.3rem; border-radius: 999px; margin: 0 0 1rem;
+  }
+  .botao:hover { filter: brightness(1.06); }
+  .lista { list-style: none; padding: 0; }
+  .lista li { position: relative; padding-left: 1.6rem; }
+  .lista li::before {
+    position: absolute; left: 0; top: 0; font-weight: 700;
+  }
+  .apaga li::before { content: "✓"; color: var(--folha); }
+  .item-fica { border-left: 3px solid var(--acento); padding: .1rem 0 .1rem 1rem; margin: 0 0 1.25rem; }
+  .item-fica p { margin: 0 0 .35rem; }
+  .item-fica > :last-child { margin-bottom: 0; }
+  .rotulo { font-weight: 650; }
+  .nota {
+    background: var(--superficie-alt); border-radius: 14px;
+    padding: .9rem 1rem; margin: 1rem 0; font-size: .9375rem;
+  }
+  .nota > :last-child { margin-bottom: 0; }
+  .rodape {
+    margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--linha);
+    color: var(--tinta-suave); font-size: .9375rem;
+  }
+  .rodape p { margin: 0 0 .4rem; }
+  @media print {
+    :root { --fundo: #fff; --superficie: #fff; --superficie-alt: #f2f2f2; --acento-suave: #f2f2f2; }
+    .pular, .atalhos, .botao { display: none; }
+    a { color: inherit; }
+    .cartao { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="pagina">
+
+<header>
+  <p class="marca">Ribeirão Preto</p>
+  <p class="sobrelinha">App da JMK Soluções</p>
+  <h1>Suporte</h1>
+  <p class="data">Última atualização: 5 de outubro de 2026</p>
+</header>
+
+<main id="conteudo">
+
+<p class="lead">O Ribeirão Preto é um app independente e gratuito, feito em Ribeirão Preto (SP) pela JMK Soluções. Não é da Prefeitura de Ribeirão Preto.</p>
+
+<section class="cartao" id="contato">
+  <h2>Fale com a gente</h2>
+  <p>Dúvida, problema no app, informação errada num lugar ou num evento, pedido sobre os seus dados: escreva para nós.</p>
+  <p><a class="botao" href="mailto:suporte.jmk@gmail.com?subject=Suporte%20-%20App%20Ribeir%C3%A3o%20Preto">Escrever para o suporte</a></p>
+  <p>O endereço é <a href="mailto:suporte.jmk@gmail.com">suporte.jmk@gmail.com</a>. No app, ele também está em <strong>Perfil</strong> &gt; <strong>Fale com a gente</strong>. Se for um problema no app, conte o modelo do celular e o que você estava fazendo.</p>
+</section>
+
+<section id="duvidas">
+  <h2>Dúvidas comuns</h2>
+
+  <div class="item-fica">
+    <h3>Como denuncio um post ou um comentário?</h3>
+    <p>Toque nos três pontinhos (⋮) do post ou do comentário e em <strong>Denunciar post</strong> ou <strong>Denunciar comentário</strong>, e escolha o motivo. A equipe analisa cada denúncia. Uma foto de perfil se denuncia pelos três pontinhos do perfil da pessoa.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Como paro de ver alguém?</h3>
+    <p>Nos mesmos três pontinhos, toque em <strong>Bloquear</strong>. Os posts e os comentários da pessoa somem para você na hora. Para desfazer, abra o perfil dela e toque em Desbloquear.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Como sugiro um evento para a agenda?</h3>
+    <p>Em <strong>Perfil</strong> &gt; <strong>Sugerir um evento</strong>, ou pelo botão Sugerir na aba Rolês. Mande o nome, a data, o local e, se quiser, uma foto. A equipe confere antes de o evento entrar na agenda.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Como excluo a minha conta?</h3>
+    <p>No app: <strong>Perfil</strong> &gt; <strong>Conta</strong> &gt; <strong>Excluir minha conta</strong>. Sem o app, peça por e-mail. O passo a passo e o que é apagado estão em <a href="excluir-conta.html">Excluir sua conta</a>.</p>
+  </div>
+
+  <div class="item-fica">
+    <h3>Quem pode usar o app?</h3>
+    <p>Maiores de 18 anos. Notícias, lugares, o tempo e a agenda funcionam sem conta; para participar da comunidade, marcar “Eu vou” e sugerir eventos, entre com o Google ou a Apple e aceite as <strong>Regras da comunidade</strong>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <p>Ribeirão Preto · JMK Soluções</p>
+  <p>Veja também: <a href="privacidade.html">Política de Privacidade</a> · <a href="excluir-conta.html">Excluir sua conta</a> · <a href="padroes-de-seguranca-infantil.html">Padrões de segurança infantil</a></p>
+</footer>
+
+</div>
+</body>
+</html>
